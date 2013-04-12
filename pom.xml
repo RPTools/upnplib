@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>upnplib</groupId>
   <artifactId>upnplib</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>1.0.7-nodebug</version>
   <name>upnplib</name>
   <description>RPTools UPNP 1.0 library</description>
   <build>
@@ -12,6 +12,7 @@
         <directory>src</directory>
         <excludes>
           <exclude>**/*.java</exclude>
+          <exclude>net/sbbi/upnp/jmx/**</exclude>
         </excludes>
       </resource>
     </resources>
@@ -20,8 +21,11 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.0</version>
         <configuration>
-          <source>1.7</source>
-          <target>1.7</target>
+          <source>1.6</source>
+          <target>1.6</target>
+          <excludes>
+            <exclude>net/sbbi/upnp/jmx/**</exclude>
+          </excludes>
         </configuration>
       </plugin>
     </plugins>
