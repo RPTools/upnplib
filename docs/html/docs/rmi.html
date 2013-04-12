@@ -1,0 +1,228 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>RMI Tools</title>
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<meta content="UPNP java RMI, java RMI NAT, RMI NAT" name="keywords">
+<script src="../skin/sbbi.js" language="JavaScript" type="text/javascript"></script>
+<link type="text/css" href="../skin/sbbi.css" rel="stylesheet">
+<link href="../skin/images/favicon.ico" type="image/x-icon" rel="shortcut icon">
+</head>
+<body text="#000000" bgcolor="#FFFFFF" leftmargin="0" topmargin="0">
+<a name="top"></a>
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr>
+<td nowrap="nowrap" width="512" rowspan="2" height="97"><a href="http://www.sbbi.net"><img border="0" src="../images/logo_upnplib.gif"></a></td><td nowrap="nowrap" align="right" background="../skin/images/top_orange.gif" colspan="2" height="49">
+<table cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td align="right">
+<form target="_blank" action="http://www.google.com/search" method="get">
+<input value="http://www.sbbi.net" name="sitesearch" type="hidden"><input size="12" name="q" id="query" type="text"><img height="1" width="5" src="../skin/images/spacer.gif"><input class="buttons" name="Search" value="Search" type="submit"><img height="1" width="5" src="../skin/images/spacer.gif"></form>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr valign="top">
+<td nowrap="nowrap" background="../skin/images/back_barre_nav.gif" align="left" height="48">
+<div class="tab">
+<a onMouseOver="MM_swapImage('btn_About','','../images/btn_About_on_svg.jpeg',1)" onMouseOut="MM_swapImgRestore()" href="../index.html"><img src="../images/btn_About_off_svg.jpeg" border="0" name="btn_About"></a><img height="26" width="4" src="../skin/images/separation_nav.gif"><a onMouseOver="MM_swapImage('btn_License','','../images/btn_License_on_svg.jpeg',1)" onMouseOut="MM_swapImgRestore()" href="../license/upnp-lib.html"><img src="../images/btn_License_off_svg.jpeg" border="0" name="btn_License"></a><img height="26" width="4" src="../skin/images/separation_nav.gif"><a href="../docs/discovery.html"><img src="../images/btn_Documentation_on_svg.jpeg" border="0" name="btn_Documentation"></a>
+</div>
+</td><td nowrap="nowrap" background="../skin/images/back_barre_nav.gif" align="right" height="48"><a onMouseOver="MM_swapImage('btn_contact','','../skin/images/btn_contact_on_svg.jpeg',1)" onMouseOut="MM_swapImgRestore()" href="mailto:info@sbbi.net"><img width="98" src="../skin/images/btn_contact_off_svg.jpeg" border="0" name="btn_contact"></a></td>
+</tr>
+</table>
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr>
+<td nowrap="nowrap" valign="top" width="242">
+<table cellspacing="0" cellpadding="0" border="0" width="242">
+<tr>
+<td background="../skin/images/menu/bkgd_mnu1.gif" valign="top" height="407">
+<table cellspacing="0" cellpadding="0" border="0" width="242">
+<tr>
+<td colspan="2"><img height="15" width="1" src="../skin/images/poussoir.gif"></td>
+</tr>
+<div class="menu">
+<tr valign="middle" align="left">
+<td align="center" width="23"><img height="7" width="9" src="../skin/images/menu/arrow_mnu.gif"></td><td><font color="#FFFFFF">Documentation</font></td>
+</tr>
+<tr>
+<td width="23">&nbsp;</td><td valign="top">
+    
+<div class="mlk">
+<img height="6" width="6" src="../skin/images/menu/bullet_mnu_off.gif">&nbsp;&nbsp;<a href="../docs/discovery.html">Discovery</a>
+</div>
+    
+<div class="mlk">
+<img height="6" width="6" src="../skin/images/menu/bullet_mnu_off.gif">&nbsp;&nbsp;<a href="../docs/messaging.html">Messaging</a>
+</div>
+    
+<div class="mlk">
+<img height="6" width="6" src="../skin/images/menu/bullet_mnu_off.gif">&nbsp;&nbsp;<a href="../docs/eventing.html">Eventing</a>
+</div>
+    
+<div class="mlk">
+<img height="6" width="6" src="../skin/images/menu/bullet_mnu_on.gif">&nbsp;&nbsp;Rmi</div>
+    
+<div class="mlk">
+<img height="6" width="6" src="../skin/images/menu/bullet_mnu_off.gif">&nbsp;&nbsp;<a href="../docs/jmx.html">Jmx</a>
+</div>
+    
+<div class="mlk">
+<img height="6" width="6" src="../skin/images/menu/bullet_mnu_off.gif">&nbsp;&nbsp;<a href="../docs/security.html">Security</a>
+</div>
+    
+<div class="mlk">
+<img height="6" width="6" src="../skin/images/menu/bullet_mnu_off.gif">&nbsp;&nbsp;<a href="../docs/natmappings.html">NAT mappings</a>
+</div>
+  
+</td>
+</tr>
+<tr>
+<td height="5" colspan="2">&nbsp;</td>
+</tr>
+</div>
+</table>
+</td>
+</tr>
+<tr>
+<td>&nbsp;
+                    <a target="_new" href="http://forrest.apache.org/"><img border="0" alt="Built with Apache Forrest logo" src="../images/built-with-forrest-button.png" width="88" height="31">&nbsp;</a><a target="_new" href="https://www.paypal.com/xclick/business=paypalsupport%40sbbi.net&no_note=1&tax=0&currency_code=USD"><img border="0" alt="Financial help logo" src="../skin/images/paypal.gif"><br>&nbsp;
+                          </a><a target="_new" href="http://www.spreadfirefox.com/?q=affiliates&id=19680&t=70"><img border="0" alt="Designed for Firefox logo" src="../skin/images/getfirefox.gif">&nbsp;</a></td>
+</tr>
+</table>
+</td><td valign="top" align="left">
+<div class="content">
+<br>
+<br>
+<table cellspacing="0" border="0" width="100%">
+<tr>
+<td align="left"><span class="little">by SuperBonBon&nbsp;
+                  </span></td><td valign="top" align="right"><script language="Javascript" type="text/javascript">
+        function printit() {  
+          if (window.print) {
+              window.print() ;  
+          } else {
+            var WebBrowser = '<OBJECT ID="WebBrowser1" WIDTH="0" HEIGHT="0" CLASSID="CLSID:8856F961-340A-11D0-A96B-00C04FD705A2"></OBJECT>';
+            document.body.insertAdjacentHTML('beforeEnd', WebBrowser);
+            WebBrowser1.ExecWB(6, 2);//Use a 1 vs. a 2 for a prompting dialog box    WebBrowser1.outerHTML = "";  
+          }
+        }
+      </script><script language="Javascript" type="text/javascript">
+        var NS = (navigator.appName == "Netscape");
+        var VERSION = parseInt(navigator.appVersion);
+        if (VERSION > 3) {
+            document.write('  <a href="javascript:printit()">');
+            document.write('    <img border="0" alt="Print this Page" src="../skin/images/printer.gif" class="skin">');
+            document.write('  </a> ');
+        }
+      </script><a id="printable" href="rmi.pdf"><img border="0" alt="PDF" src="../skin/images/pdfdoc.gif"></a>&nbsp;
+    </td>
+</tr>
+</table>
+<br>
+<p>
+<span class="titre1">RMI Tools</span>
+</p>
+<img height="7" width="100%" src="../skin/images/4lines_orange.gif"><br>
+<br>
+<span class="link"><font color="#FF6600"><a href="#How+can+UPNP%99+help+with+RMI+%3F">How can UPNP&#153; help with RMI ?</a></font>&nbsp;
+
+              <font color="#FF6600">
+              &gt;
+              <a href="#What+are+the+UPNP%99+integration+costs+%3F">What are the UPNP&#153; integration costs ?</a></font>&nbsp;
+
+              <font color="#FF6600">
+              &gt;
+              <a href="#Samples">Samples</a></font>&nbsp;
+
+              </span>
+<br>
+<br>
+    
+<a name="How+can+UPNP%99+help+with+RMI+%3F"></a>
+<p>
+<span class="titre2">How can UPNP&#153; help with RMI ?</span>
+      
+      
+<p>Imagine a remote object stub listening on port 9999 and a remote registry listening on port 1099.
+      All the objects are hosted on a computer behind a nice NAT router. If you want to expose
+      these object to the WAN probably behind the router, you'll have to open the ports of the router.
+      When you are lucky, the object listening on port 9999 is set to always listen on this port, if you aren't,
+      you'll probably have to make a netstat everytime you restart your "closed source unconfigurable" application
+      to open the good port on the router/firewall. UPNP&#153; IGD devices can help to do this job automatically.</p>
+    
+</p>
+    
+<a name="What+are+the+UPNP%99+integration+costs+%3F"></a>
+<p>
+<span class="titre2">What are the UPNP&#153; integration costs ?</span>
+      
+      
+<p>Well basically you'll need to do only one modification to your code :
+      Instead of extending the <em>java.rmi.server.UnicastRemoteObject</em> for your remote object implementation class
+      you'll have to extend the <em>net.sbbi.upnp.remote.UnicastRemoteObject</em> class. Here is an example :
+      </p>
+      
+<pre class="code">
+  package net.sbbi.upnp.samples;
+
+  import java.net.InetAddress;
+  import java.rmi.RemoteException;
+
+  import net.sbbi.upnp.remote.UnicastRemoteObject;
+
+  public class HelloWorld extends UnicastRemoteObject
+                          implements HelloWorldInterface {
+
+    public HelloWorld() throws RemoteException {
+    }
+  
+    public String say( String myName ) throws RemoteException {
+      String hostName = "localhost";
+      try {
+        hostName = InetAddress.getLocalHost().getHostName();
+      } catch ( Exception ex ) {
+      }
+      return "Hello world to " + myName + " from computer " + hostName;
+    }
+  }  
+      </pre>
+      
+<p>Finally to make everthing work you'll need an UPNP&#153; IGD device on your remote object network.
+      Every remote object creation will automatically open the port on the router and create a shutdown hook to close
+      the port during a JVM shutdown. If you decide to destroy a remote object you can call the
+      <em>net.sbbi.upnp.remote.UnicastRemoteObject.closePort()</em> method on your remote object to explicitly close the server port. </p>
+    
+</p>
+    
+<a name="Samples"></a>
+<p>
+<span class="titre2">Samples</span>
+      
+      
+<p>A small working sample is provided with the <em>HelloWorldClientSample</em> and <em>HelloWorldServerSample</em> scripts in the distribution bin directory.</p>
+    
+</p>
+  
+<br>
+</div>
+</td>
+</tr>
+<tr>
+<td>&nbsp;</td><td class="little" align="center" valign="top">
+<p>
+<img height="7" width="100%" src="../skin/images/4lines_grey.gif"></p>
+                Copyright &copy; 2005&nbsp;SuperBonBon Industries. All rights reserved.<br>
+                Unless otherwise expressly noted, the contents of these pages are licensed under the 
+                <a href="http://creativecommons.org/licenses/by-sa/2.0/" class="little">Creative Commons - Attribution / Share Alike</a> license.<br>
+<script type="text/javascript" language="JavaScript">
+                  <!--
+                    document.write("Last Published: " + document.lastModified);
+                  //  -->
+                </script></td><td valign="top" align="left">&nbsp;&nbsp;
+                <a onMouseOver="MM_swapImage('top','','../skin/images/btn_top_on.gif',1)" onMouseOut="MM_swapImgRestore()" href="#top"><img border="0" height="17" width="30" name="top" src="../skin/images/btn_top_off.gif"></a></td>
+</tr>
+</table>
+</body>
+</html>

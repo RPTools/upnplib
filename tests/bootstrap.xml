@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bootStrap JREVersion="1.4" JREDownloadURL="http://java.sun.com/getjava">
+	<kickStart name="JMXConsole" className="net.sbbi.upnp.jmx.JMXManager" 
+               kickStarterClassName="net.sbbi.bootstrap.kickstarts.StaticMainKickStarter">
+		<librariesPath>../libs</librariesPath>
+		<!-- external setting required by the class for this kick start entry -->
+		<setting name="adapterPort">7070</setting>
+        <setting name="user">admin</setting>
+        <setting name="password">admin</setting>
+        <setting name="allowwan">false</setting>
+        <setting name="locale">en_us</setting>
+        <setting name="discoverydelay">3000</setting>
+	</kickStart>
+	<kickStart name="HelloWorldClient" className="net.sbbi.upnp.samples.HelloWorldClient" 
+               kickStarterClassName="net.sbbi.bootstrap.kickstarts.StaticMainKickStarter">
+		<librariesPath>../libs</librariesPath>
+		<!-- external setting required by the class for this kick start entry -->
+		<setting name="hostname">localhost</setting>
+        <setting name="myName">Mr John Doe</setting>
+	</kickStart>
+	<kickStart name="HelloWorldServer" className="net.sbbi.upnp.samples.HelloWorldServer" 
+               kickStarterClassName="net.sbbi.bootstrap.kickstarts.StaticMainKickStarter">
+		<librariesPath>../libs</librariesPath>
+	</kickStart>
+</bootStrap> 

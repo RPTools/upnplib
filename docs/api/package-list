@@ -1,0 +1,9 @@
+net.sbbi.upnp
+net.sbbi.upnp.devices
+net.sbbi.upnp.impls
+net.sbbi.upnp.jmx
+net.sbbi.upnp.jmx.upnp
+net.sbbi.upnp.messages
+net.sbbi.upnp.remote
+net.sbbi.upnp.samples
+net.sbbi.upnp.services

@@ -1,0 +1,15 @@
+List of system properties queried by this UPNP library for configuration
+purposes.  (It also queries 'release.version' and 'os.name', but those
+are for identification over a network, not configuration.)
+
+Discovery.java:                   "net.sbbi.upnp.Discovery.bindPort"
+DiscoveryAdvertisement.java:      "net.sbbi.upnp.ddos.matchip"
+DiscoveryListener.java:           "net.sbbi.upnp.ddos.matchip"
+DiscoveryListener.java:           "net.sbbi.upnp.Discovery.bindPort"
+jmx/JMXManager.java:              "javax.management.builder.initial"
+jmx/UPNPMBeanDevice.java:         "net.sbbi.upnp.UPNPMBeanDevice.boundAddr"
+remote/UnicastRemoteObject.java:  "net.sbbi.upnp.remote.failWhenNoDeviceFound"
+remote/UnicastRemoteObject.java:  "net.sbbi.upnp.remote.failWhenDeviceCommEx"
+remote/UnicastRemoteObject.java:  "net.sbbi.upnp.remote.failWhenNoDeviceFound"
+remote/UnicastRemoteObject.java:  "net.sbbi.upnp.remote.discoveryTimeout"
+remote/UnicastRemoteObject.java:  "net.sbbi.upnp.remote.deviceUDN"

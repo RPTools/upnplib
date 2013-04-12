@@ -1,0 +1,310 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>JMX Tools</title>
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<meta content="UPNP JMX, UPNP java JMX, java JMX UPNP gateway,JMX UPNP gateway" name="keywords">
+<script src="../skin/sbbi.js" language="JavaScript" type="text/javascript"></script>
+<link type="text/css" href="../skin/sbbi.css" rel="stylesheet">
+<link href="../skin/images/favicon.ico" type="image/x-icon" rel="shortcut icon">
+</head>
+<body text="#000000" bgcolor="#FFFFFF" leftmargin="0" topmargin="0">
+<a name="top"></a>
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr>
+<td nowrap="nowrap" width="512" rowspan="2" height="97"><a href="http://www.sbbi.net"><img border="0" src="../images/logo_upnplib.gif"></a></td><td nowrap="nowrap" align="right" background="../skin/images/top_orange.gif" colspan="2" height="49">
+<table cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td align="right">
+<form target="_blank" action="http://www.google.com/search" method="get">
+<input value="http://www.sbbi.net" name="sitesearch" type="hidden"><input size="12" name="q" id="query" type="text"><img height="1" width="5" src="../skin/images/spacer.gif"><input class="buttons" name="Search" value="Search" type="submit"><img height="1" width="5" src="../skin/images/spacer.gif"></form>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr valign="top">
+<td nowrap="nowrap" background="../skin/images/back_barre_nav.gif" align="left" height="48">
+<div class="tab">
+<a onMouseOver="MM_swapImage('btn_About','','../images/btn_About_on_svg.jpeg',1)" onMouseOut="MM_swapImgRestore()" href="../index.html"><img src="../images/btn_About_off_svg.jpeg" border="0" name="btn_About"></a><img height="26" width="4" src="../skin/images/separation_nav.gif"><a onMouseOver="MM_swapImage('btn_License','','../images/btn_License_on_svg.jpeg',1)" onMouseOut="MM_swapImgRestore()" href="../license/upnp-lib.html"><img src="../images/btn_License_off_svg.jpeg" border="0" name="btn_License"></a><img height="26" width="4" src="../skin/images/separation_nav.gif"><a href="../docs/discovery.html"><img src="../images/btn_Documentation_on_svg.jpeg" border="0" name="btn_Documentation"></a>
+</div>
+</td><td nowrap="nowrap" background="../skin/images/back_barre_nav.gif" align="right" height="48"><a onMouseOver="MM_swapImage('btn_contact','','../skin/images/btn_contact_on_svg.jpeg',1)" onMouseOut="MM_swapImgRestore()" href="mailto:info@sbbi.net"><img width="98" src="../skin/images/btn_contact_off_svg.jpeg" border="0" name="btn_contact"></a></td>
+</tr>
+</table>
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr>
+<td nowrap="nowrap" valign="top" width="242">
+<table cellspacing="0" cellpadding="0" border="0" width="242">
+<tr>
+<td background="../skin/images/menu/bkgd_mnu1.gif" valign="top" height="407">
+<table cellspacing="0" cellpadding="0" border="0" width="242">
+<tr>
+<td colspan="2"><img height="15" width="1" src="../skin/images/poussoir.gif"></td>
+</tr>
+<div class="menu">
+<tr valign="middle" align="left">
+<td align="center" width="23"><img height="7" width="9" src="../skin/images/menu/arrow_mnu.gif"></td><td><font color="#FFFFFF">Documentation</font></td>
+</tr>
+<tr>
+<td width="23">&nbsp;</td><td valign="top">
+    
+<div class="mlk">
+<img height="6" width="6" src="../skin/images/menu/bullet_mnu_off.gif">&nbsp;&nbsp;<a href="../docs/discovery.html">Discovery</a>
+</div>
+    
+<div class="mlk">
+<img height="6" width="6" src="../skin/images/menu/bullet_mnu_off.gif">&nbsp;&nbsp;<a href="../docs/messaging.html">Messaging</a>
+</div>
+    
+<div class="mlk">
+<img height="6" width="6" src="../skin/images/menu/bullet_mnu_off.gif">&nbsp;&nbsp;<a href="../docs/eventing.html">Eventing</a>
+</div>
+    
+<div class="mlk">
+<img height="6" width="6" src="../skin/images/menu/bullet_mnu_off.gif">&nbsp;&nbsp;<a href="../docs/rmi.html">Rmi</a>
+</div>
+    
+<div class="mlk">
+<img height="6" width="6" src="../skin/images/menu/bullet_mnu_on.gif">&nbsp;&nbsp;Jmx</div>
+    
+<div class="mlk">
+<img height="6" width="6" src="../skin/images/menu/bullet_mnu_off.gif">&nbsp;&nbsp;<a href="../docs/security.html">Security</a>
+</div>
+    
+<div class="mlk">
+<img height="6" width="6" src="../skin/images/menu/bullet_mnu_off.gif">&nbsp;&nbsp;<a href="../docs/natmappings.html">NAT mappings</a>
+</div>
+  
+</td>
+</tr>
+<tr>
+<td height="5" colspan="2">&nbsp;</td>
+</tr>
+</div>
+</table>
+</td>
+</tr>
+<tr>
+<td>&nbsp;
+                    <a target="_new" href="http://forrest.apache.org/"><img border="0" alt="Built with Apache Forrest logo" src="../images/built-with-forrest-button.png" width="88" height="31">&nbsp;</a><a target="_new" href="https://www.paypal.com/xclick/business=paypalsupport%40sbbi.net&no_note=1&tax=0&currency_code=USD"><img border="0" alt="Financial help logo" src="../skin/images/paypal.gif"><br>&nbsp;
+                          </a><a target="_new" href="http://www.spreadfirefox.com/?q=affiliates&id=19680&t=70"><img border="0" alt="Designed for Firefox logo" src="../skin/images/getfirefox.gif">&nbsp;</a></td>
+</tr>
+</table>
+</td><td valign="top" align="left">
+<div class="content">
+<br>
+<br>
+<table cellspacing="0" border="0" width="100%">
+<tr>
+<td align="left"><span class="little">by SuperBonBon&nbsp;
+                  </span></td><td valign="top" align="right"><script language="Javascript" type="text/javascript">
+        function printit() {  
+          if (window.print) {
+              window.print() ;  
+          } else {
+            var WebBrowser = '<OBJECT ID="WebBrowser1" WIDTH="0" HEIGHT="0" CLASSID="CLSID:8856F961-340A-11D0-A96B-00C04FD705A2"></OBJECT>';
+            document.body.insertAdjacentHTML('beforeEnd', WebBrowser);
+            WebBrowser1.ExecWB(6, 2);//Use a 1 vs. a 2 for a prompting dialog box    WebBrowser1.outerHTML = "";  
+          }
+        }
+      </script><script language="Javascript" type="text/javascript">
+        var NS = (navigator.appName == "Netscape");
+        var VERSION = parseInt(navigator.appVersion);
+        if (VERSION > 3) {
+            document.write('  <a href="javascript:printit()">');
+            document.write('    <img border="0" alt="Print this Page" src="../skin/images/printer.gif" class="skin">');
+            document.write('  </a> ');
+        }
+      </script><a id="printable" href="jmx.pdf"><img border="0" alt="PDF" src="../skin/images/pdfdoc.gif"></a>&nbsp;
+    </td>
+</tr>
+</table>
+<br>
+<p>
+<span class="titre1">JMX Tools</span>
+</p>
+<img height="7" width="100%" src="../skin/images/4lines_orange.gif"><br>
+<br>
+<span class="link"><font color="#FF6600"><a href="#UPNP%99+Services+JMX+management+interface">UPNP&#153; Services JMX management interface</a></font>&nbsp;
+
+              <font color="#FF6600">
+              &gt;
+              <a href="#UPNP%99+Services+as+JMX+MBeans">UPNP&#153; Services as JMX MBeans</a></font>&nbsp;
+
+              <font color="#FF6600">
+              &gt;
+              <a href="#UPNPDiscoveryMBean">UPNPDiscoveryMBean</a></font>&nbsp;
+
+              <font color="#FF6600">
+              &gt;
+              <a href="#JMX+UPNP+Connector">JMX UPNP Connector</a></font>&nbsp;
+
+              </span>
+<br>
+<br>
+    
+<a name="UPNP%99+Services+JMX+management+interface"></a>
+<p>
+<span class="titre2">UPNP&#153; Services JMX management interface</span>
+      
+      
+<p>We provide an JMX management interface with the <em>net.sbbi.upnp.jmx.JMXManager</em> class.
+      The console is an HTTP interface based on the <a target="_blank" href="http://mx4j.sourceforge.net">MX4J</a> project.
+      You can try it to see the <em>net.sbbi.upnp.jmx.UPNPServiceMBean</em> class in action. You'll need an UPNP&#153; Device
+      on your network to see UPNP&#153; devices exposed as JMX MBean in the http console. The console detects when new devices are 
+      joining or leaving the network and automatically register/unregister these devices as MBeans.</p>
+      
+      
+<p>We provide a script called <em>UPNPLib</em> in the bin distribution directory to start the console on port 7070.
+         You can call <a target="_blank" href="http://localhost:7070/">this</a> link to access it with username/password <em>admin/admin</em>
+         once the script is started. You'll have to edit the <em>bin/bootstrap.xml</em> startup config file <em>JMXConsole</em> entry to modify user names and server port.</p>
+    
+</p>
+    
+<a name="UPNP%99+Services+as+JMX+MBeans"></a>
+<p>
+<span class="titre2">UPNP&#153; Services as JMX MBeans</span>
+      
+      
+<p>UPNP&#153; Services can be exposed as <a target="_blank" href="http://java.sun.com/products/JavaManagement/">JMX MBeans</a>
+         with the <em>net.sbbi.upnp.jmx.UPNPServiceMBean</em> class. The MBean can be used to call device
+         service operations and state variables transparently. You can also use resource bundles with the MBean to provide
+         informations about operations names, input parameters and state variables. Take a look at the the 
+         javadoc for more info about it.</p>
+      
+<p>Here is a small example to create and expose an UPNP&#153; device service as an MBean :</p>
+      
+<pre class="code">
+  UPNPRootDevice rootDevice = net.sbbi.upnp.Discovery.discover()[0];
+  //let's look at a root device specific child devices
+  String dvURN = "upnp:schemas-upnp-org:device:WANDevice";
+  UPNPDevice myIGDWANDevice = rootDevice.getChildDevice( dvURN );
+  if ( myIGDWANDevice != null ) {
+    System.out.println( "IGD WAN device " + myIGDWANDevice.getUDN() );
+    String srvURN = "upnp:schemas-upnp-org:service:WANIpConnection:1";
+    UPNPService WANIpConnectionSrv = myIGDWANDevice.getService( srvURN );
+    if ( WANIpConnectionSrv != null ) {
+      System.out.println( "IGD WAN device WANIpConnection service " + 
+                          WANIpConnectionSrv.getServiceId() );
+      // creating the MBean
+      UPNPServiceMBean mBean = new UPNPServiceMBean( myIGDWANDevice, 
+                                                     WANIpConnectionSrv );
+      // and creating an MBean Server and registering the bean you can
+      // use mBean.getObjectName() to have an unique beans object name
+      MBeanServer srv = MBeanServerFactory.createMBeanServer();
+      srv.registerMBean( mBean, mBean.getObjectName() );
+      // now invoke a method defined in the UPNP device service specs
+      // ( upnp:schemas-upnp-org:service:WANIpConnection:1 here ).
+      // We call here the GetExternalIPAddress method to retreive
+      // the IP from the UPNP device.
+      Map result = (Map)srv.invoke( mBean.getObjectName(), 
+                                    "GetExternalIPAddress", 
+                                    null, null );
+      // result can be null if wrong params or an unknow param
+      // name has been provided. Check the device specs if such 
+      // thing occurs
+      if ( result != null ) {
+        // the device returns the ip with the NewExternalIPAddress key
+        // according to the device specs
+        String ip = (String)result.get( "NewExternalIPAddress" );
+        System.out.println( "Device IP is " + ip );
+      }
+    }
+  }
+      </pre>
+    
+</p>
+    
+<a name="UPNPDiscoveryMBean"></a>
+<p>
+<span class="titre2">UPNPDiscoveryMBean</span>
+    	
+      	
+<p>This MBean allows you to discover devices on the network and register the devices services as UPNPServiceMBean :</p>
+      	
+<pre class="code">
+  import net.sbbi.upnp.jmx.*;
+  ...
+  String name = "UPNPLib discovery:name=Discovery MBean";
+  ObjectName discBeanName = new ObjectName( name );
+  UPNPDiscoveryMBean bean = new UPNPDiscovery( discoveryTimeout, true, true );
+  server.registerMBean( bean, discBeanName );
+	     	</pre>
+	     	
+<p>The code is quite easy, you can also define to only monitor a set of specific devices :</p>
+	     	
+<pre class="code">
+  import net.sbbi.upnp.jmx.*;
+  ...
+  String name = "UPNPLib discovery:name=Discovery MBean";
+  ObjectName discBeanName = new ObjectName( name );
+  String type = "urn:schemas-upnp-org:device:WANDevice:1";
+  UPNPDiscoveryMBean bean = new UPNPDiscovery( type, discoveryTimeout, true, true );
+  server.registerMBean( bean, discBeanName );
+      	</pre>
+      	
+<p>Here only devices of type <em>urn:schemas-upnp-org:device:WANDevice:1</em> will be registered.
+      	You can take a look at the API docs for more infor about the class constructors and behaviour</p>
+    
+</p>
+    
+<a name="JMX+UPNP+Connector"></a>
+<p>
+<span class="titre2">JMX UPNP Connector</span>
+      
+      
+<p>You can expose your entire JMX interface as UPNP&#153; devices via the standard JMX connector api. Here is a code sample to register the connector :</p>
+      
+<pre class="code">
+  // simple URL define your host name and port
+  JMXServiceURL url = new JMXServiceURL( "service:jmx:upnp://localhost:8080 );
+  Map env = new HashMap();
+  // define the net.sbbi.upnp.jmx package for connector implementation
+  env.put( JMXConnectorServerFactory.PROTOCOL_PROVIDER_PACKAGES, "net.sbbi.upnp.jmx" );
+  // define a custom UPNP Mbeans Builder look at interface 
+  // net.sbbi.upnp.jmx.upnp.UPNPMBeanBuilder javadoc for more info
+  env.put( UPNPConnectorServer.UPNP_MBEANS_BUILDER, new MyUPNPMBeanBuilderImpl() );
+  // setting to instruct the connector to lookup for all UPNP evices on the network
+  // and expose them as MBeans into the MBeans server, default to false
+  env.put( UPNPConnectorServer.EXPOSE_UPNP_DEVICES_AS_MBEANS, Boolean.TRUE );
+  // discovery timeout for the previ0ous setting
+  env.put( UPNPConnectorServer.EXPOSE_UPNP_DEVICES_AS_MBEANS_TIMEOUT, 2500 );
+  // setting to expose MBeans as UPNP devices
+  env.put( UPNPConnectorServer.EXPOSE_MBEANS_AS_UPNP_DEVICES, Boolean.TRUE );
+  
+  // start the connector and look at the magic with an UPNP devices tool ;o)
+  JMXConnectorServer connectorServer = JMXConnectorServerFactory.newJMXConnectorServer( url, env, null );
+  upnpConnectorBeanName = "Connectors:protocol=upnp,host=localhost,port=8080;
+  ObjectName cntorServerName = ObjectName.getInstance( upnpConnectorBeanName );
+  server.registerMBean( connectorServer, cntorServerName );
+  connectorServer.start();
+      </pre>
+      
+<p>Once an MBean is registered it will be automatically exposed as an custom UPNP device. The device will be destroyed when the MBeans is unregistered
+      from the MBeans server, take a look at the API docs for more infos.</p>
+    
+</p>
+
+  
+<br>
+</div>
+</td>
+</tr>
+<tr>
+<td>&nbsp;</td><td class="little" align="center" valign="top">
+<p>
+<img height="7" width="100%" src="../skin/images/4lines_grey.gif"></p>
+                Copyright &copy; 2005&nbsp;SuperBonBon Industries. All rights reserved.<br>
+                Unless otherwise expressly noted, the contents of these pages are licensed under the 
+                <a href="http://creativecommons.org/licenses/by-sa/2.0/" class="little">Creative Commons - Attribution / Share Alike</a> license.<br>
+<script type="text/javascript" language="JavaScript">
+                  <!--
+                    document.write("Last Published: " + document.lastModified);
+                  //  -->
+                </script></td><td valign="top" align="left">&nbsp;&nbsp;
+                <a onMouseOver="MM_swapImage('top','','../skin/images/btn_top_on.gif',1)" onMouseOut="MM_swapImgRestore()" href="#top"><img border="0" height="17" width="30" name="top" src="../skin/images/btn_top_off.gif"></a></td>
+</tr>
+</table>
+</body>
+</html>

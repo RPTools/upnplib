@@ -1,0 +1,286 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>UPNPLib</title>
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<meta content="UPNP java library, UPNP java, UPNP free, UPNP" name="keywords">
+<script src="skin/sbbi.js" language="JavaScript" type="text/javascript"></script>
+<link type="text/css" href="skin/sbbi.css" rel="stylesheet">
+<link href="skin/images/favicon.ico" type="image/x-icon" rel="shortcut icon">
+</head>
+<body text="#000000" bgcolor="#FFFFFF" leftmargin="0" topmargin="0">
+<a name="top"></a>
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr>
+<td nowrap="nowrap" width="512" rowspan="2" height="97"><a href="http://www.sbbi.net"><img border="0" src="images/logo_upnplib.gif"></a></td><td nowrap="nowrap" align="right" background="skin/images/top_orange.gif" colspan="2" height="49">
+<table cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td align="right">
+<form target="_blank" action="http://www.google.com/search" method="get">
+<input value="http://www.sbbi.net" name="sitesearch" type="hidden"><input size="12" name="q" id="query" type="text"><img height="1" width="5" src="skin/images/spacer.gif"><input class="buttons" name="Search" value="Search" type="submit"><img height="1" width="5" src="skin/images/spacer.gif"></form>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr valign="top">
+<td nowrap="nowrap" background="skin/images/back_barre_nav.gif" align="left" height="48">
+<div class="tab">
+<a href="index.html"><img src="images/btn_About_on_svg.jpeg" border="0" name="btn_About"></a><img height="26" width="4" src="skin/images/separation_nav.gif"><a onMouseOver="MM_swapImage('btn_License','','images/btn_License_on_svg.jpeg',1)" onMouseOut="MM_swapImgRestore()" href="license/upnp-lib.html"><img src="images/btn_License_off_svg.jpeg" border="0" name="btn_License"></a><img height="26" width="4" src="skin/images/separation_nav.gif"><a onMouseOver="MM_swapImage('btn_Documentation','','images/btn_Documentation_on_svg.jpeg',1)" onMouseOut="MM_swapImgRestore()" href="docs/discovery.html"><img src="images/btn_Documentation_off_svg.jpeg" border="0" name="btn_Documentation"></a>
+</div>
+</td><td nowrap="nowrap" background="skin/images/back_barre_nav.gif" align="right" height="48"><a onMouseOver="MM_swapImage('btn_contact','','skin/images/btn_contact_on_svg.jpeg',1)" onMouseOut="MM_swapImgRestore()" href="mailto:info@sbbi.net"><img width="98" src="skin/images/btn_contact_off_svg.jpeg" border="0" name="btn_contact"></a></td>
+</tr>
+</table>
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr>
+<td nowrap="nowrap" valign="top" width="242">
+<table cellspacing="0" cellpadding="0" border="0" width="242">
+<tr>
+<td background="skin/images/menu/bkgd_mnu1.gif" valign="top" height="407">
+<table cellspacing="0" cellpadding="0" border="0" width="242">
+<tr>
+<td colspan="2"><img height="15" width="1" src="skin/images/poussoir.gif"></td>
+</tr>
+<div class="menu">
+<tr valign="middle" align="left">
+<td align="center" width="23"><img height="7" width="9" src="skin/images/menu/arrow_mnu.gif"></td><td><font color="#FFFFFF">About</font></td>
+</tr>
+<tr>
+<td width="23">&nbsp;</td><td valign="top">
+    
+<div class="mlk">
+<img height="6" width="6" src="skin/images/menu/bullet_mnu_off.gif">&nbsp;&nbsp;<a href="http://www.sbbi.net/site/index.html">SBBI Home</a>
+</div>
+    
+<div class="mlk">
+<img height="6" width="6" src="skin/images/menu/bullet_mnu_on.gif">&nbsp;&nbsp;Index</div>
+    
+<div class="mlk">
+<img height="6" width="6" src="skin/images/menu/bullet_mnu_off.gif">&nbsp;&nbsp;<a href="features.html">Features</a>
+</div>
+    
+<div class="mlk">
+<img height="6" width="6" src="skin/images/menu/bullet_mnu_off.gif">&nbsp;&nbsp;<a href="compatibility.html">Compatibility</a>
+</div>
+    
+<div class="mlk">
+<img height="6" width="6" src="skin/images/menu/bullet_mnu_off.gif">&nbsp;&nbsp;<a href="changes.html">Changes</a>
+</div>
+    
+<table cellpadding="0" cellspacing="0" border="0">
+<tr align="left">
+<td align="center" width="15"><img height="7" width="9" src="skin/images/menu/arrow_mnu.gif"></td><td><font color="#FFFFFF">Developers</font></td>
+</tr>
+<tr>
+<td>&nbsp;</td><td valign="top">
+      
+<div class="mlk">
+<img height="6" width="6" src="skin/images/menu/bullet_mnu_off.gif">&nbsp;&nbsp;<a href="changelog.html">CVS Changes</a>
+</div>
+      
+<div class="mlk">
+<img height="6" width="6" src="skin/images/menu/bullet_mnu_off.gif">&nbsp;&nbsp;<a href="todo.html">Todo</a>
+</div>
+    
+</td>
+</tr>
+</table>
+    
+<div class="mlk">
+<img height="6" width="6" src="skin/images/menu/bullet_mnu_off.gif">&nbsp;&nbsp;<a href="http://www.sbbi.net/site/forums/forum.html">Forum</a>
+</div>
+    
+<div class="mlk">
+<img height="6" width="6" src="skin/images/menu/bullet_mnu_off.gif">&nbsp;&nbsp;<a href="http://www.sbbi.net/site/toys/download.html">Download</a>
+</div>
+  
+</td>
+</tr>
+<tr>
+<td height="5" colspan="2">&nbsp;</td>
+</tr>
+</div>
+</table>
+</td>
+</tr>
+<tr>
+<td>&nbsp;
+                    <a target="_new" href="http://forrest.apache.org/"><img border="0" alt="Built with Apache Forrest logo" src="images/built-with-forrest-button.png" width="88" height="31">&nbsp;</a><a target="_new" href="https://www.paypal.com/xclick/business=paypalsupport%40sbbi.net&no_note=1&tax=0&currency_code=USD"><img border="0" alt="Financial help logo" src="skin/images/paypal.gif"><br>&nbsp;
+                          </a><a target="_new" href="http://www.spreadfirefox.com/?q=affiliates&id=19680&t=70"><img border="0" alt="Designed for Firefox logo" src="skin/images/getfirefox.gif">&nbsp;</a></td>
+</tr>
+</table>
+</td><td valign="top" align="left">
+<div class="content">
+<br>
+<br>
+<table cellspacing="0" border="0" width="100%">
+<tr>
+<td align="left"><span class="little">by SuperBonBon&nbsp;
+                  </span></td><td valign="top" align="right"><script language="Javascript" type="text/javascript">
+        function printit() {  
+          if (window.print) {
+              window.print() ;  
+          } else {
+            var WebBrowser = '<OBJECT ID="WebBrowser1" WIDTH="0" HEIGHT="0" CLASSID="CLSID:8856F961-340A-11D0-A96B-00C04FD705A2"></OBJECT>';
+            document.body.insertAdjacentHTML('beforeEnd', WebBrowser);
+            WebBrowser1.ExecWB(6, 2);//Use a 1 vs. a 2 for a prompting dialog box    WebBrowser1.outerHTML = "";  
+          }
+        }
+      </script><script language="Javascript" type="text/javascript">
+        var NS = (navigator.appName == "Netscape");
+        var VERSION = parseInt(navigator.appVersion);
+        if (VERSION > 3) {
+            document.write('  <a href="javascript:printit()">');
+            document.write('    <img border="0" alt="Print this Page" src="skin/images/printer.gif" class="skin">');
+            document.write('  </a> ');
+        }
+      </script><a id="printable" href="index.pdf"><img border="0" alt="PDF" src="skin/images/pdfdoc.gif"></a>&nbsp;
+    </td>
+</tr>
+</table>
+<br>
+<p>
+<span class="titre1">UPNPLib</span>
+</p>
+<img height="7" width="100%" src="skin/images/4lines_orange.gif"><br>
+<br>
+<span class="link"><font color="#FF6600"><a href="#What+is+UPNP%99">What is UPNP&#153;</a></font>&nbsp;
+
+              <font color="#FF6600">
+              &gt;
+              <a href="#How+did+it+start">How did it start</a></font>&nbsp;
+
+              <font color="#FF6600">
+              &gt;
+              <a href="#What+did+we+do">What did we do</a></font>&nbsp;
+
+              <font color="#FF6600">
+              &gt;
+              <a href="#Where+to+go+next">Where to go next</a></font>&nbsp;
+
+              </span>
+<br>
+<br>
+    
+<a name="What+is+UPNP%99"></a>
+<p>
+<span class="titre2">What is UPNP&#153;</span>
+      
+
+      
+<p>
+<a target="_blank" href="http://www.upnp.org">UPNP&#153;</a> is a protocol based on
+      <a target="_blank" href="http://www.upnp.org/download/draft_cai_ssdp_v1_03.txt">SSDP</a>
+      to discover UPNP&#153; compliant devices on a network. Specific
+      search can be made to only look for a specific type of device or for all
+      devices available. Once a device is found on the network, the client can
+      retreive the device description ( devices state variables and available
+      operations ) and start to interact with it using XML messages. UPNP&#153;
+      devices types capabilities are usually available <a target="_blank" href="http://www.upnp.org/standardizeddcps/default.asp">here</a>.
+      UPNP&#153; is born in 1999 and seems to start to find a larger audience since
+      most new Broadband ADSL router modems are UPNP&#153; compliant.</p>
+    
+</p>
+
+    
+<a name="How+did+it+start"></a>
+<p>
+<span class="titre2">How did it start</span>
+      
+
+      
+<p>Everything started when the <a href="http://www.sbbi.net/site/jafs/index.html">JAFS</a> project
+      needed to have a mechanism to automatically open server ports on a NAT
+      router so that it become accessible from the internet without needs to
+      go hack the router configuration to manually open the required ports (
+      when admin is aware the ports needs to be open :o) ). SNMP could have
+      been a technology used for such purpose but unfortunatly there are some
+      pitfalls :</p>
+
+      
+<ol>
+        
+<li>SNMP is not always implemented on entry level routers.</li>
+        
+<li>SNMP interface to open ports on a router is not standardized which
+        leads to develop specific SNMP routine for each SNMP aware routers
+        vendors.</li>
+        
+<li>No good open source libraries for SNMP available :o)</li>
+      
+</ol>
+
+      
+<p>UPNP&#153; was another option that has a big advantage : There is a defined
+      interface in <a target="_blank" href="http://www.upnp.org/standardizeddcps/igd.asp">IGD devices</a>
+      (Internet Gateway Device) to do such job which means that all IGD UPNP&#153;
+      devices could work with the same piece of code. Almost all new ADSL
+      broadband routers contains the UPNP&#153; IGD technology, since we did not
+      found any good Java UPNP&#153; libraries so we decided to create our own.</p>
+    
+</p>
+
+    
+<a name="What+did+we+do"></a>
+<p>
+<span class="titre2">What did we do</span>
+      
+
+      
+<p>We have implemented in UPNPLib all the required mechanics to :</p>
+      
+<ol>
+        
+<li>Discover available devices on the network</li>
+        
+<li>Interact with found devices</li>
+        
+<li>Receive events when an UPNP&#153; device state variable changes or when
+        a device joins or leaves the network</li>
+      
+</ol>
+      
+<p>The library is currently compatible with all 1.4.x and higher JRE.</p>
+    
+</p>
+
+    
+<a name="Where+to+go+next"></a>
+<p>
+<span class="titre2">Where to go next</span>
+      
+
+      
+<p>The documentation contains some usefull informations to discover,
+      interact and receive events from UPNP&#153; devices. Another good document to
+      read to understand the mechanics behind UPNP&#153; can be found <a target="_blank" href="http://www.upnp.org/resources/documents/CleanUPnPDA101-20031202s.pdf">here</a>.
+      Another interesting link concerning the different technologies used with
+      UPNP&#153; is available <a target="_blank" href="http://www.upnp.org/resources/specifications.asp">here</a>.</p>
+      
+<p>Finally you can start to look at the <a href="docs/discovery.html">API examples</a>
+      to start to play with the library.</p>
+    
+</p>
+  
+<br>
+</div>
+</td>
+</tr>
+<tr>
+<td>&nbsp;</td><td class="little" align="center" valign="top">
+<p>
+<img height="7" width="100%" src="skin/images/4lines_grey.gif"></p>
+                Copyright &copy; 2005&nbsp;SuperBonBon Industries. All rights reserved.<br>
+                Unless otherwise expressly noted, the contents of these pages are licensed under the 
+                <a href="http://creativecommons.org/licenses/by-sa/2.0/" class="little">Creative Commons - Attribution / Share Alike</a> license.<br>
+<script type="text/javascript" language="JavaScript">
+                  <!--
+                    document.write("Last Published: " + document.lastModified);
+                  //  -->
+                </script></td><td valign="top" align="left">&nbsp;&nbsp;
+                <a onMouseOver="MM_swapImage('top','','skin/images/btn_top_on.gif',1)" onMouseOut="MM_swapImgRestore()" href="#top"><img border="0" height="17" width="30" name="top" src="skin/images/btn_top_off.gif"></a></td>
+</tr>
+</table>
+</body>
+</html>

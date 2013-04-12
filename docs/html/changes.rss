@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE rss PUBLIC "-//Netscape Communications//DTD RSS 0.91//EN" "http://my.netscape.com/publish/formats/rss-0.91.dtd">
+<rss version="0.91"><channel><title>UPNP Changes</title><link>http://www.sbbi.net/site/upnp/changes.html</link><description>UPNP Changes</description><language>en-us</language><item><title>messaging fix</title><link>http://www.sbbi.net/site/upnp/changes.html</link><description>messaging fix
+              by 
+              SBB
+              :
+              
+  	    Fixing a XML messaging issue with Netgear MR814v2 devices.
+  	   Thanks to Smyers.</description></item><item><title>messaging fix</title><link>http://www.sbbi.net/site/upnp/changes.html</link><description>messaging fix
+              by 
+              SBB
+              :
+              
+  	    Fixing a missing Host HTTP header field in requests sent to UPNP devices creating an issue with Windows XP FCS.
+  	   Thanks to Malcolm.</description></item><item><title>api update</title><link>http://www.sbbi.net/site/upnp/changes.html</link><description>api update
+              by 
+              SBB
+              :
+              
+  	    Minor improvements to the InternetGatewayDevice and Discovery class API to allows to lookup
+  	    devices for a particular network interface.
+  	  </description></item><item><title>messaging update</title><link>http://www.sbbi.net/site/upnp/changes.html</link><description>messaging update
+              by 
+              SBB
+              :
+              
+        Improving the API to easily retreive a state variable value on the UPNP device
+        and new convenience methods added to set action message input parameters.
+      </description></item><item><title>data types fix</title><link>http://www.sbbi.net/site/upnp/changes.html</link><description>data types fix
+              by 
+              SBB
+              :
+              
+        Bug fix with ISO 8601 dates parsing, and support added for this date format
+        as action message input parameter.
+      </description></item><item><title>JMX fix</title><link>http://www.sbbi.net/site/upnp/changes.html</link><description>JMX fix
+              by 
+              SBB
+              :
+              
+        Fixing an issue with boolean type conversion for action message input params from
+        a JMX UPNPServiceMBean call.
+       Thanks to Goyzer.</description></item><item><title>eventing update</title><link>http://www.sbbi.net/site/upnp/changes.html</link><description>eventing update
+              by 
+              SBB
+              :
+              
+        Improving the API for service events subscription
+       Thanks to Wowplayer.</description></item><item><title>eventing fix</title><link>http://www.sbbi.net/site/upnp/changes.html</link><description>eventing fix
+              by 
+              SBB
+              :
+              
+        Fixing a bug with services events notifications when device IP is changing.
+       Thanks to Wowplayer.</description></item><item><title>messaging fix</title><link>http://www.sbbi.net/site/upnp/changes.html</link><description>messaging fix
+              by 
+              SBB
+              :
+              
+        Fixing an issue with XML messages parsing returned by Netgear WGR614 UPNP devices.
+       Thanks to Nielm.</description></item></channel></rss>

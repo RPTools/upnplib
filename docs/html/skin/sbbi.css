@@ -1,0 +1,94 @@
+td {font-family: Verdana; font-size: 12px; color: #000000}
+a:hover {text-decoration: underline}
+a:link {font-family: Verdana; font-size: 12px; color: #ff6600;text-decoration: none}
+a:active {text-decoration: underline}
+a:visited {font-family: Verdana; font-size: 12px; color: #ff9900;text-decoration: none}
+
+a.little:hover {text-decoration: underline}
+a.little:link {font-family: Verdana; font-size: 9px; color: #ff6600;text-decoration: none}
+a.little:active {text-decoration: underline}
+a.little:visited {font-family: Verdana; font-size: 9px; color: #ff9900;text-decoration: none}
+
+.bold {
+	font-family: Verdana, sans-serif;
+	font-size: 12px;
+	color: #000000;
+	text-decoration: none;
+	font-weight: bold;
+}
+.bold_orange {
+	font-family: Verdana, sans-serif;
+	font-size: 12px;
+	color: #ff6600;
+	text-decoration: none;
+	font-weight: bold;
+}
+.navbar {
+	font-family: Verdana;
+	font-size: 16px;
+	font-weight: bold;
+	color: #ff6600;
+}
+.titre1 {
+	font-family: Verdana;
+	font-size: 18px;
+	font-weight: bold;
+	color: #ff6600;
+}
+.soustitre1 {
+	font-family: Verdana;
+	font-size: 12px;
+	font-weight: italic;
+	color: #ff6600;
+}
+.titre2 {
+	font-family: Verdana;
+	font-size: 15px;
+	font-weight: bold;
+	color: #660099;
+}
+.titre3 {
+	font-family: Verdana;
+	font-size: 12px;
+	font-weight: italic;
+	color: #660099;
+}
+.titre4 {
+	font-family: Verdana;
+	font-size: 10px;
+	color: #660099;
+}
+.little {
+	font-family: Verdana;
+	font-size: 9px;
+	font-style: normal;
+	font-weight: normal;
+	color: #000000;
+}
+
+
+.frame { margin: 5px 20px 5px 20px; font-size: 90%; }
+.frame.content { margin: 0px; }
+
+.note { border: solid 1px #7099C5; background-color: #f0f0ff; }
+.note.label { background-color: #7099C5; color: #ffffff; }
+
+.warning { border: solid 1px #D00000; background-color: #fff0f0; }
+.warning.label { background-color: #D00000; color: #ffffff; }
+
+.fixme { border: solid 1px #ff6600; background-color: #ffffff; }
+.fixme.label { background-color: #ff6600; color: #ffffff; }
+
+.code { border-color: #CFDCED; border-style: solid; border-width: 1px; }
+.codefrag {	font-family: "Courier New", Courier, monospace; }
+
+.schemaElement { border-color: #CFDCED; border-style: solid; border-width: 1px; }
+
+input.buttons { font-family: Verdana,Arial,Helvetica,sans-serif;
+	   font-size: 10pt;
+	   text-align: center;
+	   color: #000000;
+	   border-color: #000000; 
+	   border-style: solid; 
+	   border-width: 1px; 
+	   background-color: #efefe7; }

@@ -1,0 +1,198 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>UPNP&#153; security</title>
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<meta content="UPNPLib security" name="keywords">
+<script src="../skin/sbbi.js" language="JavaScript" type="text/javascript"></script>
+<link type="text/css" href="../skin/sbbi.css" rel="stylesheet">
+<link href="../skin/images/favicon.ico" type="image/x-icon" rel="shortcut icon">
+</head>
+<body text="#000000" bgcolor="#FFFFFF" leftmargin="0" topmargin="0">
+<a name="top"></a>
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr>
+<td nowrap="nowrap" width="512" rowspan="2" height="97"><a href="http://www.sbbi.net"><img border="0" src="../images/logo_upnplib.gif"></a></td><td nowrap="nowrap" align="right" background="../skin/images/top_orange.gif" colspan="2" height="49">
+<table cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td align="right">
+<form target="_blank" action="http://www.google.com/search" method="get">
+<input value="http://www.sbbi.net" name="sitesearch" type="hidden"><input size="12" name="q" id="query" type="text"><img height="1" width="5" src="../skin/images/spacer.gif"><input class="buttons" name="Search" value="Search" type="submit"><img height="1" width="5" src="../skin/images/spacer.gif"></form>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr valign="top">
+<td nowrap="nowrap" background="../skin/images/back_barre_nav.gif" align="left" height="48">
+<div class="tab">
+<a onMouseOver="MM_swapImage('btn_About','','../images/btn_About_on_svg.jpeg',1)" onMouseOut="MM_swapImgRestore()" href="../index.html"><img src="../images/btn_About_off_svg.jpeg" border="0" name="btn_About"></a><img height="26" width="4" src="../skin/images/separation_nav.gif"><a onMouseOver="MM_swapImage('btn_License','','../images/btn_License_on_svg.jpeg',1)" onMouseOut="MM_swapImgRestore()" href="../license/upnp-lib.html"><img src="../images/btn_License_off_svg.jpeg" border="0" name="btn_License"></a><img height="26" width="4" src="../skin/images/separation_nav.gif"><a href="../docs/discovery.html"><img src="../images/btn_Documentation_on_svg.jpeg" border="0" name="btn_Documentation"></a>
+</div>
+</td><td nowrap="nowrap" background="../skin/images/back_barre_nav.gif" align="right" height="48"><a onMouseOver="MM_swapImage('btn_contact','','../skin/images/btn_contact_on_svg.jpeg',1)" onMouseOut="MM_swapImgRestore()" href="mailto:info@sbbi.net"><img width="98" src="../skin/images/btn_contact_off_svg.jpeg" border="0" name="btn_contact"></a></td>
+</tr>
+</table>
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr>
+<td nowrap="nowrap" valign="top" width="242">
+<table cellspacing="0" cellpadding="0" border="0" width="242">
+<tr>
+<td background="../skin/images/menu/bkgd_mnu1.gif" valign="top" height="407">
+<table cellspacing="0" cellpadding="0" border="0" width="242">
+<tr>
+<td colspan="2"><img height="15" width="1" src="../skin/images/poussoir.gif"></td>
+</tr>
+<div class="menu">
+<tr valign="middle" align="left">
+<td align="center" width="23"><img height="7" width="9" src="../skin/images/menu/arrow_mnu.gif"></td><td><font color="#FFFFFF">Documentation</font></td>
+</tr>
+<tr>
+<td width="23">&nbsp;</td><td valign="top">
+    
+<div class="mlk">
+<img height="6" width="6" src="../skin/images/menu/bullet_mnu_off.gif">&nbsp;&nbsp;<a href="../docs/discovery.html">Discovery</a>
+</div>
+    
+<div class="mlk">
+<img height="6" width="6" src="../skin/images/menu/bullet_mnu_off.gif">&nbsp;&nbsp;<a href="../docs/messaging.html">Messaging</a>
+</div>
+    
+<div class="mlk">
+<img height="6" width="6" src="../skin/images/menu/bullet_mnu_off.gif">&nbsp;&nbsp;<a href="../docs/eventing.html">Eventing</a>
+</div>
+    
+<div class="mlk">
+<img height="6" width="6" src="../skin/images/menu/bullet_mnu_off.gif">&nbsp;&nbsp;<a href="../docs/rmi.html">Rmi</a>
+</div>
+    
+<div class="mlk">
+<img height="6" width="6" src="../skin/images/menu/bullet_mnu_off.gif">&nbsp;&nbsp;<a href="../docs/jmx.html">Jmx</a>
+</div>
+    
+<div class="mlk">
+<img height="6" width="6" src="../skin/images/menu/bullet_mnu_on.gif">&nbsp;&nbsp;Security</div>
+    
+<div class="mlk">
+<img height="6" width="6" src="../skin/images/menu/bullet_mnu_off.gif">&nbsp;&nbsp;<a href="../docs/natmappings.html">NAT mappings</a>
+</div>
+  
+</td>
+</tr>
+<tr>
+<td height="5" colspan="2">&nbsp;</td>
+</tr>
+</div>
+</table>
+</td>
+</tr>
+<tr>
+<td>&nbsp;
+                    <a target="_new" href="http://forrest.apache.org/"><img border="0" alt="Built with Apache Forrest logo" src="../images/built-with-forrest-button.png" width="88" height="31">&nbsp;</a><a target="_new" href="https://www.paypal.com/xclick/business=paypalsupport%40sbbi.net&no_note=1&tax=0&currency_code=USD"><img border="0" alt="Financial help logo" src="../skin/images/paypal.gif"><br>&nbsp;
+                          </a><a target="_new" href="http://www.spreadfirefox.com/?q=affiliates&id=19680&t=70"><img border="0" alt="Designed for Firefox logo" src="../skin/images/getfirefox.gif">&nbsp;</a></td>
+</tr>
+</table>
+</td><td valign="top" align="left">
+<div class="content">
+<br>
+<br>
+<table cellspacing="0" border="0" width="100%">
+<tr>
+<td align="left"><span class="little">by SuperBonBon&nbsp;
+                  </span></td><td valign="top" align="right"><script language="Javascript" type="text/javascript">
+        function printit() {  
+          if (window.print) {
+              window.print() ;  
+          } else {
+            var WebBrowser = '<OBJECT ID="WebBrowser1" WIDTH="0" HEIGHT="0" CLASSID="CLSID:8856F961-340A-11D0-A96B-00C04FD705A2"></OBJECT>';
+            document.body.insertAdjacentHTML('beforeEnd', WebBrowser);
+            WebBrowser1.ExecWB(6, 2);//Use a 1 vs. a 2 for a prompting dialog box    WebBrowser1.outerHTML = "";  
+          }
+        }
+      </script><script language="Javascript" type="text/javascript">
+        var NS = (navigator.appName == "Netscape");
+        var VERSION = parseInt(navigator.appVersion);
+        if (VERSION > 3) {
+            document.write('  <a href="javascript:printit()">');
+            document.write('    <img border="0" alt="Print this Page" src="../skin/images/printer.gif" class="skin">');
+            document.write('  </a> ');
+        }
+      </script><a id="printable" href="security.pdf"><img border="0" alt="PDF" src="../skin/images/pdfdoc.gif"></a>&nbsp;
+    </td>
+</tr>
+</table>
+<br>
+<p>
+<span class="titre1">UPNP&#153; security</span>
+</p>
+<img height="7" width="100%" src="../skin/images/4lines_orange.gif"><br>
+<br>
+<span class="link"><font color="#FF6600"><a href="#Security+problems">Security problems</a></font>&nbsp;
+
+              <font color="#FF6600">
+              &gt;
+              <a href="#Devices+security">Devices security</a></font>&nbsp;
+
+              </span>
+<br>
+<br>
+    
+<a name="Security+problems"></a>
+<p>
+<span class="titre2">Security problems</span>
+      
+
+      
+<p>Some security problems have been found with some UPNP&#153; implementations ( guess who :o) ). Most of the security
+      flaws are implementation independant and do not concern UPNPLib. However a DDOS attack can be acheived
+      due to a protocol flaw. UPNPLib has been developped to do not allow ( or at least limit ) such kind of attacks.
+      You can read more about it <a target="_blank" href="http://www.goland.org/Tech/upnp_security_flaws.htm">here</a>.
+      The official MS bug report is <a target="_blank" href="http://www.microsoft.com/technet/security/bulletin/MS01-059.mspx">here</a>
+      and the <a target="_blank" href="http://www.eeye.com/html/Research/Advisories/AD20011220.html">security bulletin</a> from the company
+      that discovered the issue.</p>
+      
+      
+<p>UPNPLib is not concerned with these flaws, future will tell if UPNPLib other
+      security issues will be found.</p>
+      
+    
+</p>
+
+    
+<a name="Devices+security"></a>
+<p>
+<span class="titre2">Devices security</span>
+      
+      
+<p>Another problem with UPNP&#153; is that there is no protocol built-in ACL to define who
+      can access and send orders to UPNP&#153; devices.</p>
+      
+<p>UPNP&#153; forum came with a <a target="_blank" href="http://www.upnp.org/standardizeddcps/security.asp">solution</a> to fix
+      this issue but unfortunatly we did not find devices compliant with this spec to integrate this ACL and security
+      layer in the library. We hope we will be able to do it anytime soon with some other tools.</p>
+      
+<p>This means that this library will not work with devices implementing and using such security services.</p>
+      
+    
+</p>
+  
+<br>
+</div>
+</td>
+</tr>
+<tr>
+<td>&nbsp;</td><td class="little" align="center" valign="top">
+<p>
+<img height="7" width="100%" src="../skin/images/4lines_grey.gif"></p>
+                Copyright &copy; 2005&nbsp;SuperBonBon Industries. All rights reserved.<br>
+                Unless otherwise expressly noted, the contents of these pages are licensed under the 
+                <a href="http://creativecommons.org/licenses/by-sa/2.0/" class="little">Creative Commons - Attribution / Share Alike</a> license.<br>
+<script type="text/javascript" language="JavaScript">
+                  <!--
+                    document.write("Last Published: " + document.lastModified);
+                  //  -->
+                </script></td><td valign="top" align="left">&nbsp;&nbsp;
+                <a onMouseOver="MM_swapImage('top','','../skin/images/btn_top_on.gif',1)" onMouseOut="MM_swapImgRestore()" href="#top"><img border="0" height="17" width="30" name="top" src="../skin/images/btn_top_off.gif"></a></td>
+</tr>
+</table>
+</body>
+</html>

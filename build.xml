@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!--
+/*
+ *  This software copyright by various authors including the RPTools.net
+ *  development team, and licensed under the LGPL Version 3 or, at your
+ *  option, any later version.
+ *
+ *  Portions of this software were originally covered under the Apache
+ *  Software License, Version 1.1 or Version 2.0.
+ *
+ *  See the file LICENSE elsewhere in this distribution for license details.
+ */
+-->
+<project name="sbbi-upnplib" default="compile">
+    <path id="classpath">
+	<fileset dir="buildlibs" includes="**/*.jar"/>
+    </path>
+    <property file="src/net/sbbi/upnp/version.properties" />
+    <property name="dist" value="dist" />
+    <!-- What's a better way of handling the 'debug' property? -->
+    <property name="debug" value="off" />
+    <property name="debugext" value="nodebug" />
+
+    <target name="clean" description="remove intermediate files">
+        <delete dir="classes"/>
+    </target>
+
+    <target name="compile" depends="clean" description="compile the Java source code to class files">
+        <mkdir dir="classes"/>
+	<javac srcdir="src" destdir="classes" classpathref="classpath"
+	    deprecation="on"
+	    debug="${debug}"
+	    includeAntRuntime="no">
+	    <compilerarg value="-Xlint"/>
+	</javac>
+    </target>
+
+    <target name="jar" depends="compile" description="create a Jar file for the application">
+	<jar destfile="${dist}/sbbi-upnplib-${release.version}-${debugext}.jar">
+	    <fileset dir="classes" includes="**/*.class,**/*.properties"/>
+        </jar>
+    </target>
+</project>

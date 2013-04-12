@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<root xmlns="urn:schemas-upnp-org:device-1-0">
+  <specVersion>
+    <major>1</major>
+    <minor>0</minor>
+  </specVersion>
+  <URLBase>http://10.0.0.1:80/</URLBase>
+  <device>
+    <deviceType>urn:schemas-upnp-org:device:InternetGatewayDevice:1</deviceType>
+    <presentationURL>/start.htm</presentationURL>
+    <friendlyName>Residential Gateway</friendlyName>
+    <manufacturer>NETGEAR, Inc.</manufacturer>
+    <manufacturerURL>http://www.NETGEAR.com</manufacturerURL>
+    <modelDescription>RangeMax(TM) Wireless Router</modelDescription>
+    <modelNumber>WPN824v2</modelNumber>
+    <modelName>RangeMax(TM) Wireless Router</modelName>
+    <UDN>uuid:c69a5d6a-b30a-b563-3ea5-6622ad886868</UDN>
+    <serviceList>
+      <service>
+        <serviceType>urn:schemas-upnp-org:service:Layer3Forwarding:1</serviceType>
+        <serviceId>urn:upnp-org:serviceId:L3Forwarding1</serviceId>
+        <SCPDURL>/Public_UPNP_Layer3F.xml</SCPDURL>
+        <controlURL>/Public_UPNP_C1</controlURL>
+        <eventSubURL>/Public_UPNP_Event_1</eventSubURL>
+      </service>
+    </serviceList>
+    <deviceList>
+      <device>
+        <deviceType>urn:schemas-upnp-org:device:WANDevice:1</deviceType>
+        <friendlyName>WAN Device</friendlyName>
+        <manufacturer>NETGEAR, Inc.</manufacturer>
+        <manufacturerURL>http://www.NETGEAR.com</manufacturerURL>
+        <modelDescription>RangeMax(TM) Wireless Router</modelDescription>
+        <modelNumber>WPN824v2</modelNumber>
+        <modelName>RangeMax(TM) Wireless Router</modelName>
+        <UDN>uuid:63ba3211-1c05-a0e1-3732-85c65c74677d</UDN>
+        <serviceList>
+          <service>
+            <serviceType>urn:schemas-upnp-org:service:WANCommonInterfaceConfig:1</serviceType>
+            <serviceId>urn:upnp-org:serviceId:WANCommonIFC1</serviceId>
+            <SCPDURL>/Public_UPNP_WAND.xml</SCPDURL>
+            <controlURL>/Public_UPNP_C2</controlURL>
+            <eventSubURL>/Public_UPNP_Event_2</eventSubURL>
+          </service>
+        </serviceList>
+        <deviceList>
+          <device>
+            <deviceType>urn:schemas-upnp-org:device:WANConnectionDevice:1</deviceType>
+            <friendlyName>WAN Connection Device</friendlyName>
+            <manufacturer>NETGEAR, Inc.</manufacturer>
+            <manufacturerURL>http://www.NETGEAR.com</manufacturerURL>
+            <modelDescription>RangeMax(TM) Wireless Router</modelDescription>
+            <modelNumber>WPN824v2</modelNumber>
+            <modelName>RangeMax(TM) Wireless Router</modelName>
+            <UDN>uuid:ca22b020-d07d-b2ec-34a1-85107400e4be</UDN>
+            <serviceList>
+              <service>
+                <serviceType>urn:schemas-upnp-org:service:WANIPConnection:1</serviceType>
+                <serviceId>urn:upnp-org:serviceId:WANIPConn1</serviceId>
+                <SCPDURL>/Public_UPNP_WANIPConn.xml</SCPDURL>
+                <controlURL>/Public_UPNP_C3</controlURL>
+                <eventSubURL>/Public_UPNP_Event_3</eventSubURL>
+              </service>
+            </serviceList>
+          </device>
+        </deviceList>
+      </device>
+    </deviceList>
+  </device>
+</root>
