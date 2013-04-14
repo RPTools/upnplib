@@ -1,12 +1,10 @@
 /*
- *  This software copyright by various authors including the RPTools.net
- *  development team, and licensed under the LGPL Version 3 or, at your
- *  option, any later version.
- *
- *  Portions of this software were originally covered under the Apache
- *  Software License, Version 1.1 or Version 2.0.
- *
- *  See the file LICENSE elsewhere in this distribution for license details.
+ * This software copyright by various authors including the RPTools.net development team, and licensed under the LGPL
+ * Version 3 or, at your option, any later version.
+ * 
+ * Portions of this software were originally covered under the Apache Software License, Version 1.1 or Version 2.0.
+ * 
+ * See the file LICENSE elsewhere in this distribution for license details.
  */
 
 package net.sbbi.upnp.services;
@@ -30,6 +28,7 @@ import org.apache.commons.jxpath.JXPathContext;
 import org.apache.commons.jxpath.JXPathException;
 import org.apache.commons.jxpath.Pointer;
 import org.apache.commons.jxpath.xml.DocumentContainer;
+import org.apache.log4j.Logger;
 
 /**
  * Representation of an UPNP service
@@ -38,6 +37,8 @@ import org.apache.commons.jxpath.xml.DocumentContainer;
  * @version 1.0
  */
 public class UPNPService {
+	private final static Logger log = Logger.getLogger(UPNPService.class);
+
 	protected String serviceType;
 	protected String serviceId;
 	private int specVersionMajor;
@@ -159,12 +160,17 @@ public class UPNPService {
 
 			specVersionMajor = Integer.parseInt((String) rootCtx.getValue("upnp:specVersion/upnp:major"));
 			specVersionMinor = Integer.parseInt((String) rootCtx.getValue("upnp:specVersion/upnp:minor"));
+			if (log.isDebugEnabled())
+				log.debug("Found SCPD major,minor version " + specVersionMajor + "," + specVersionMinor);
 
 			parseServiceStateVariables(rootCtx);
 
 			Pointer actionsListPtr = rootCtx.getPointer("upnp:actionList");
 			JXPathContext actionsListCtx = context.getRelativeContext(actionsListPtr);
 			Double arraySize = (Double) actionsListCtx.getValue("count( upnp:action )");
+			if (log.isDebugEnabled())
+				log.debug("child actions count is " + arraySize.toString());
+
 			UPNPServiceActions = new HashMap<String, ServiceAction>();
 			for (int idx = 1; idx <= arraySize.intValue(); idx++) {
 				ServiceAction action = new ServiceAction();
@@ -176,9 +182,13 @@ public class UPNPService {
 				} catch (JXPathException ex) {
 					// there is no arguments list.
 				}
+				if (log.isDebugEnabled())
+					log.debug("Processing name,argumentList of " + action.name + "," + (argumentListPtr == null ? "null" : argumentListPtr));
 				if (argumentListPtr != null) {
 					JXPathContext argumentListCtx = actionsListCtx.getRelativeContext(argumentListPtr);
 					Double arraySizeArgs = (Double) argumentListCtx.getValue("count( upnp:argument )");
+					if (log.isDebugEnabled())
+						log.debug("number of argument elements is " + arraySizeArgs.toString());
 
 					List<ServiceActionArgument> orderedActionArguments = new ArrayList<ServiceActionArgument>();
 					for (int zed = 1; zed <= arraySizeArgs.intValue(); zed++) {
@@ -195,6 +205,8 @@ public class UPNPService {
 						}
 						arg.relatedStateVariable = stateVar;
 						orderedActionArguments.add(arg);
+						if (log.isDebugEnabled())
+							log.debug("found argument name,direction of " + arg.name + "," + arg.direction);
 					}
 					if (arraySizeArgs.intValue() > 0) {
 						action.setActionArguments(orderedActionArguments);
@@ -212,8 +224,11 @@ public class UPNPService {
 		Pointer serviceStateTablePtr = rootContext.getPointer("upnp:serviceStateTable");
 		JXPathContext serviceStateTableCtx = rootContext.getRelativeContext(serviceStateTablePtr);
 		Double arraySize = (Double) serviceStateTableCtx.getValue("count( upnp:stateVariable )");
+		if (log.isDebugEnabled())
+			log.debug("child stateVariable count is " + arraySize.toString());
+
 		UPNPServiceStateVariables = new HashMap<String, ServiceStateVariable>();
-		for (int idx = 0; idx < arraySize.intValue(); idx++) {
+		for (int idx = 1; idx <= arraySize.intValue(); idx++) {
 			ServiceStateVariable srvStateVar = new ServiceStateVariable();
 			String sendEventsLcl = null;
 			try {
@@ -229,7 +244,7 @@ public class UPNPService {
 			try {
 				srvStateVar.defaultValue = (String) serviceStateTableCtx.getValue("upnp:stateVariable[" + idx + "]/upnp:defaultValue");
 			} catch (JXPathException defEx) {
-				// can happend since default value is not
+				// can happen since default value is not mandatory
 			}
 			Pointer allowedValuesPtr = null;
 			try {
@@ -240,13 +255,14 @@ public class UPNPService {
 			if (allowedValuesPtr != null) {
 				JXPathContext allowedValuesCtx = serviceStateTableCtx.getRelativeContext(allowedValuesPtr);
 				Double arraySizeAllowed = (Double) allowedValuesCtx.getValue("count( upnp:allowedValue )");
+				if (log.isDebugEnabled())
+					log.debug("child allowedValue count is " + arraySizeAllowed.toString());
 				srvStateVar.allowedvalues = new HashSet<String>();
 				for (int zed = 1; zed <= arraySizeAllowed.intValue(); zed++) {
 					String allowedValue = (String) allowedValuesCtx.getValue("upnp:allowedValue[" + zed + "]");
 					srvStateVar.allowedvalues.add(allowedValue);
 				}
 			}
-
 			Pointer allowedValueRangePtr = null;
 			try {
 				allowedValueRangePtr = serviceStateTableCtx.getPointer("upnp:stateVariable[" + idx + "]/upnp:allowedValueRange");
@@ -259,12 +275,13 @@ public class UPNPService {
 				try {
 					srvStateVar.stepRangeValue = (String) serviceStateTableCtx.getValue("upnp:stateVariable[" + idx + "]/upnp:allowedValueRange/upnp:step");
 				} catch (JXPathException stepEx) {
-					// can happend since step is not mandatory
+					// can happen since step is not mandatory
 				}
+				if (log.isDebugEnabled())
+					log.debug("allowedRange is " + srvStateVar.minimumRangeValue + "-" + srvStateVar.maximumRangeValue + " step " + srvStateVar.stepRangeValue);
 			}
 			UPNPServiceStateVariables.put(srvStateVar.getName(), srvStateVar);
 		}
-
 	}
 
 	private void lazyInitiate() {
