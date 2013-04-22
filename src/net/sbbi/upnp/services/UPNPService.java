@@ -105,7 +105,7 @@ public class UPNPService {
 	}
 
 	/**
-	 * Retreives a service action for its given name
+	 * Retrieves a service action for its given name
 	 * 
 	 * @param actionName
 	 *            the service action name
@@ -117,7 +117,7 @@ public class UPNPService {
 	}
 
 	/**
-	 * Retreives a service state variable for its given name
+	 * Retrieves a service state variable for its given name
 	 * 
 	 * @param stateVariableName
 	 *            the state variable name
@@ -169,7 +169,7 @@ public class UPNPService {
 			JXPathContext actionsListCtx = context.getRelativeContext(actionsListPtr);
 			Double arraySize = (Double) actionsListCtx.getValue("count( upnp:action )");
 			if (log.isDebugEnabled())
-				log.debug("child actions count is " + arraySize.toString());
+				log.debug("child action count is " + arraySize.toString());
 
 			UPNPServiceActions = new HashMap<String, ServiceAction>();
 			for (int idx = 1; idx <= arraySize.intValue(); idx++) {

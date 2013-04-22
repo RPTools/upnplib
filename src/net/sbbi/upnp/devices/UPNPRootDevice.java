@@ -1,12 +1,12 @@
 /*
- *  This software copyright by various authors including the RPTools.net
- *  development team, and licensed under the LGPL Version 3 or, at your
- *  option, any later version.
- *
- *  Portions of this software were originally covered under the Apache
- *  Software License, Version 1.1 or Version 2.0.
- *
- *  See the file LICENSE elsewhere in this distribution for license details.
+ * This software copyright by various authors including the RPTools.net
+ * development team, and licensed under the LGPL Version 3 or, at your option,
+ * any later version.
+ * 
+ * Portions of this software were originally covered under the Apache Software
+ * License, Version 1.1 or Version 2.0.
+ * 
+ * See the file LICENSE elsewhere in this distribution for license details.
  */
 
 package net.sbbi.upnp.devices;
@@ -27,8 +27,9 @@ import org.apache.commons.jxpath.xml.DocumentContainer;
 import org.apache.log4j.Logger;
 
 /**
- * Root UPNP device that is contained in a device definition file. Slightly differs from a simple UPNPDevice object.
- * This object will contains all the child devices, this is the top objet in the UPNP device devices hierarchy.
+ * Root UPNP device that is contained in a device definition file. Slightly
+ * differs from a simple UPNPDevice object. This object will contains all the
+ * child devices, this is the top objet in the UPNP device devices hierarchy.
  * 
  * @author <a href="mailto:superbonbon@sbbi.net">SuperBonBon</a>
  * @version 1.0
@@ -51,13 +52,15 @@ public class UPNPRootDevice extends UPNPDevice {
 	private final DocumentContainer UPNPDevice;
 
 	/**
-	 * Constructor for the root device, constructs itself from An xml device definition file provided by the UPNP device
-	 * via http normally.
+	 * Constructor for the root device, constructs itself from An xml device
+	 * definition file provided by the UPNP device via http normally.
 	 * 
 	 * @param deviceDefLoc
-	 *            the location of the XML device definition file using "the urn:schemas-upnp-org:device-1-0" namespace
+	 *            the location of the XML device definition file using
+	 *            "the urn:schemas-upnp-org:device-1-0" namespace
 	 * @param maxAge
-	 *            the maximum age of this UPNP device in secs before considered to be outdated
+	 *            the maximum age of this UPNP device in secs before considered
+	 *            to be outdated
 	 * @param vendorFirmware
 	 *            the vendor firmware
 	 * @param discoveryUSN
@@ -65,9 +68,10 @@ public class UPNPRootDevice extends UPNPDevice {
 	 * @param discoveryUDN
 	 *            the discovery UDN used to find and create this device
 	 * @throws MalformedURLException
-	 *             if the location URL is invalid and cannot be used to populate this root object and its child devices
-	 *             IllegalStateException if the device has an unsupported version, currently only version 1.0 is
-	 *             supported
+	 *             if the location URL is invalid and cannot be used to populate
+	 *             this root object and its child devices IllegalStateException
+	 *             if the device has an unsupported version, currently only
+	 *             version 1.0 is supported
 	 */
 	public UPNPRootDevice(URL deviceDefLoc, String maxAge, String vendorFirmware, String discoveryUSN, String discoveryUDN) throws MalformedURLException, IllegalStateException {
 		this(deviceDefLoc, maxAge);
@@ -77,19 +81,22 @@ public class UPNPRootDevice extends UPNPDevice {
 	}
 
 	/**
-	 * Constructor for the root device, constructs itself from An xml device definition file provided by the UPNP device
-	 * via http normally.
+	 * Constructor for the root device, constructs itself from An xml device
+	 * definition file provided by the UPNP device via http normally.
 	 * 
 	 * @param deviceDefLoc
-	 *            the location of the XML device definition file using "the urn:schemas-upnp-org:device-1-0" namespace
+	 *            the location of the XML device definition file using
+	 *            "the urn:schemas-upnp-org:device-1-0" namespace
 	 * @param maxAge
-	 *            the maximum age of this UPNP device in secs before considered to be outdated
+	 *            the maximum age of this UPNP device in secs before considered
+	 *            to be outdated
 	 * @param vendorFirmware
 	 *            the vendor firmware
 	 * @throws MalformedURLException
-	 *             if the location URL is invalid and cannot be used to populate this root object and its child devices
-	 *             IllegalStateException if the device has an unsupported version, currently only version 1.0 is
-	 *             supported
+	 *             if the location URL is invalid and cannot be used to populate
+	 *             this root object and its child devices IllegalStateException
+	 *             if the device has an unsupported version, currently only
+	 *             version 1.0 is supported
 	 */
 	public UPNPRootDevice(URL deviceDefLoc, String maxAge, String vendorFirmware) throws MalformedURLException, IllegalStateException {
 		this(deviceDefLoc, maxAge);
@@ -97,17 +104,20 @@ public class UPNPRootDevice extends UPNPDevice {
 	}
 
 	/**
-	 * Constructor for the root device, constructs itself from An xml device definition file provided by the UPNP device
-	 * via http normally.
+	 * Constructor for the root device, constructs itself from An xml device
+	 * definition file provided by the UPNP device via http normally.
 	 * 
 	 * @param deviceDefLoc
-	 *            the location of the XML device definition file using "the urn:schemas-upnp-org:device-1-0" namespace
+	 *            the location of the XML device definition file using
+	 *            "the urn:schemas-upnp-org:device-1-0" namespace
 	 * @param maxAge
-	 *            the maximum age in secs of this UPNP device before considered to be outdated
+	 *            the maximum age in secs of this UPNP device before considered
+	 *            to be outdated
 	 * @throws MalformedURLException
-	 *             if the location URL is invalid and cannot be used to populate this root object and its child devices
-	 *             IllegalStateException if the device has an unsupported version, currently only version 1.0 is
-	 *             supported
+	 *             if the location URL is invalid and cannot be used to populate
+	 *             this root object and its child devices IllegalStateException
+	 *             if the device has an unsupported version, currently only
+	 *             version 1.0 is supported
 	 */
 	public UPNPRootDevice(URL deviceDefLoc, String maxAge) throws MalformedURLException, IllegalStateException {
 		this.deviceDefLoc = deviceDefLoc;
@@ -141,14 +151,15 @@ public class UPNPRootDevice extends UPNPDevice {
 			if (base != null && base.trim().length() > 0) {
 				URLBase = new URL(base);
 				if (log.isDebugEnabled())
-					log.debug("device URLBase " + URLBase);
+					log.debug("device specified URLBase as " + URLBase);
 				buildURLBase = false;
 			}
 		} catch (JXPathException ex) {
-			// URLBase is not mandatory we assume we use the URL of the device
+			// URLBase is not mandatory
+			// we assume we use the URL of the device
 		} catch (MalformedURLException malformedEx) {
 			// crappy urlbase provided
-			log.warn("Error occured during device baseURL " + base + " parsing, building it from device default location", malformedEx);
+			log.warn("Error occured while parsing device baseURL '" + base + "'; building it from device default location instead", malformedEx);
 		}
 		if (buildURLBase) {
 			String URL = deviceDefLoc.getProtocol() + "://" + deviceDefLoc.getHost() + ":" + deviceDefLoc.getPort();
@@ -170,9 +181,10 @@ public class UPNPRootDevice extends UPNPDevice {
 	/**
 	 * The validity time for this device in milliseconds,
 	 * 
-	 * @return the number of milliseconds remaining before the device object that has been build is considered to be
-	 *         outdated, after this delay the UPNP device should resend an advertisement message or a negative value if
-	 *         the device is outdated
+	 * @return the number of milliseconds remaining before the device object
+	 *         that has been build is considered to be outdated, after this
+	 *         delay the UPNP device should resend an advertisement message or a
+	 *         negative value if the device is outdated
 	 */
 	public long getValidityTime() {
 		long elapsed = System.currentTimeMillis() - creationTime;
@@ -183,7 +195,8 @@ public class UPNPRootDevice extends UPNPDevice {
 	 * Resets the device validity time
 	 * 
 	 * @param newMaxAge
-	 *            the maximum age in secs of this UPNP device before considered to be outdated
+	 *            the maximum age in secs of this UPNP device before considered
+	 *            to be outdated
 	 */
 	public void resetValidityTime(String newMaxAge) {
 		validityTime = Integer.parseInt(newMaxAge) * 1000;
@@ -222,14 +235,16 @@ public class UPNPRootDevice extends UPNPDevice {
 	/**
 	 * URL base acces
 	 * 
-	 * @return URL the URL base, or null if the device does not provide such information
+	 * @return URL the URL base, or null if the device does not provide such
+	 *         information
 	 */
 	public URL getURLBase() {
 		return URLBase;
 	}
 
 	/**
-	 * Parsing an UPNPdevice description element (<device>) in the description XML file
+	 * Parsing an UPNPdevice description element (<device>) in the description
+	 * XML file
 	 * 
 	 * @param device
 	 *            the device object that will be populated
@@ -277,8 +292,10 @@ public class UPNPRootDevice extends UPNPDevice {
 		}
 		device.parent = parent;
 
-		fillUPNPServicesList(device, deviceCtx);
+		// Fill icons list first, since it will be in the XML data
+		// stream first (well, probably ;-))
 		fillUPNPDeviceIconsList(device, deviceCtx, URLBase);
+		fillUPNPServicesList(device, deviceCtx);
 
 		Pointer deviceListPtr;
 		try {
@@ -327,14 +344,17 @@ public class UPNPRootDevice extends UPNPDevice {
 	}
 
 	/**
-	 * Parsing an UPNPdevice services list element (<device/serviceList>) in the description XML file
+	 * Parsing an UPNPdevice services list element (<device/serviceList>) in the
+	 * description XML file
 	 * 
 	 * @param device
-	 *            the device object that will store the services list (UPNPService) objects
+	 *            the device object that will store the services list
+	 *            (UPNPService) objects
 	 * @param deviceCtx
 	 *            an XPath context for object population
 	 * @throws MalformedURLException
-	 *             if some URL provided in the description file for a service entry is invalid
+	 *             if some URL provided in the description file for a service
+	 *             entry is invalid
 	 */
 	private void fillUPNPServicesList(UPNPDevice device, JXPathContext deviceCtx) throws MalformedURLException {
 		Pointer serviceListPtr = deviceCtx.getPointer("upnp:serviceList");
@@ -355,10 +375,12 @@ public class UPNPRootDevice extends UPNPDevice {
 	}
 
 	/**
-	 * Parsing an UPNPdevice icons list element (<device/iconList>) in the description XML file. This list can be null.
+	 * Parsing an UPNPdevice icons list element (<device/iconList>) in the
+	 * description XML file. This list can be null.
 	 * 
 	 * @param device
-	 *            the device object that will store the icons list (DeviceIcon) objects
+	 *            the device object that will store the icons list (DeviceIcon)
+	 *            objects
 	 * @param deviceCtx
 	 *            an XPath context for object population
 	 * @throws MalformedURLException
@@ -380,7 +402,7 @@ public class UPNPRootDevice extends UPNPDevice {
 		for (int idx = 1; idx <= arraySize.intValue(); idx++) {
 			DeviceIcon ico = new DeviceIcon();
 			if (true) {
-				JXPathContext elemCtx = deviceCtx.getRelativeContext(iconListCtx.getPointer("upnp:icon[" + idx + "]"));
+				JXPathContext elemCtx = iconListCtx.getRelativeContext(iconListCtx.getPointer("upnp:icon[" + idx + "]"));
 				ico.mimeType = (String) elemCtx.getValue("upnp:mimetype");
 				ico.width = Integer.parseInt((String) elemCtx.getValue("upnp:width"));
 				ico.height = Integer.parseInt((String) elemCtx.getValue("upnp:height"));
@@ -408,7 +430,8 @@ public class UPNPRootDevice extends UPNPDevice {
 	 *            the base device URL, needed if the url param is relative
 	 * @return an URL object defining the url param
 	 * @throws MalformedURLException
-	 *             if the url param or baseURL.toExternalForm() + url cannot be parsed to create an URL object
+	 *             if the url param or baseURL.toExternalForm() + url cannot be
+	 *             parsed to create an URL object
 	 */
 	public final static URL getURL(String url, URL baseURL) throws MalformedURLException {
 		URL rtrVal;
