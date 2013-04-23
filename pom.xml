@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>upnplib</groupId>
   <artifactId>upnplib</artifactId>
-  <version>1.0.8-nodebug</version>
+  <version>1.0.9-nodebug</version>
   <name>upnplib</name>
   <description>RPTools UPNP 1.0 library</description>
   <build>
