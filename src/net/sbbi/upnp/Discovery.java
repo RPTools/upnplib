@@ -1,12 +1,10 @@
 /*
- *  This software copyright by various authors including the RPTools.net
- *  development team, and licensed under the LGPL Version 3 or, at your
- *  option, any later version.
- *
- *  Portions of this software were originally covered under the Apache
- *  Software License, Version 1.1 or Version 2.0.
- *
- *  See the file LICENSE elsewhere in this distribution for license details.
+ * This software copyright by various authors including the RPTools.net development team, and licensed under the LGPL
+ * Version 3 or, at your option, any later version.
+ * 
+ * Portions of this software were originally covered under the Apache Software License, Version 1.1 or Version 2.0.
+ * 
+ * See the file LICENSE elsewhere in this distribution for license details.
  */
 
 package net.sbbi.upnp;
@@ -192,6 +190,7 @@ public class Discovery {
 				}
 			}
 		}
+		timeOut = timeOut < mx * 1000 ? (mx + 1) * 1000 : timeOut;
 		try {
 			Thread.sleep(timeOut);
 		} catch (InterruptedException ex) {
@@ -234,16 +233,17 @@ public class Discovery {
 		InetSocketAddress bindAdr = new InetSocketAddress(src, bindPort);
 
 		java.net.MulticastSocket skt = new java.net.MulticastSocket(bindAdr);
-//		skt.joinGroup(groupAdr);
+//		skt.joinGroup(groupAdr); // Don't need to be a member of the group to send packets to that group...
 		skt.setTimeToLive(ttl);
 		StringBuffer packet = new StringBuffer();
 		packet.append("M-SEARCH * HTTP/1.1\r\n");
 		packet.append("HOST: 239.255.255.250:1900\r\n");
+		packet.append("ST: ").append(searchTarget).append("\r\n");
 		packet.append("MAN: \"ssdp:discover\"\r\n");
 		packet.append("MX: ").append(mx).append("\r\n");
-		packet.append("ST: ").append(searchTarget).append("\r\n").append("\r\n");
+		packet.append("\r\n");
 		if (log.isDebugEnabled())
-			log.debug("Sending discovery message on 239.255.255.250:1900 multicast address form ip " + src.getHostAddress() + ":\n" + packet.toString());
+			log.debug("Sending discovery message on 239.255.255.250:1900 multicast address from ip " + src.getHostAddress() + ":\n" + packet.toString());
 		String toSend = packet.toString();
 		byte[] pk = toSend.getBytes();
 		skt.send(new DatagramPacket(pk, pk.length, adr));
