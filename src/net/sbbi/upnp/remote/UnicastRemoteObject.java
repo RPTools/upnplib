@@ -14,6 +14,7 @@ package net.sbbi.upnp.remote;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.ServerSocket;
+import java.util.List;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.rmi.server.ExportException;
@@ -54,7 +55,7 @@ import net.sbbi.upnp.messages.UPNPMessageFactory;
  * set the java.rmi.server.hostname system property with an hostname matching your router/firewall IP.<br/>
  * 
  * Make also sure that your RMI Registry port is opened on the router otherwise nothing will work. You can use a
- * urn:schemas-upnp-org:device:InternetGatewayDevice:1 device just like this class to automate the job.
+ * urn:schemas-upnp-org:device:InternetGatewayDevice:1 or 2 device just like this class to automate the job.
  * 
  * @author <a href="mailto:superbonbon@sbbi.net">SuperBonBon</a>
  * @version 1.0
@@ -299,13 +300,16 @@ public class UnicastRemoteObject extends RemoteServer {
 		discoverDevice();
 
 		if (wanConnDevice != null && !portOpened) {
-			net.sbbi.upnp.services.UPNPService wanIPSrv = wanConnDevice.getService("urn:schemas-upnp-org:service:WANIPConnection:1");
+			net.sbbi.upnp.services.UPNPService wanIPSrv = wanConnDevice.getService("urn:schemas-upnp-org:service:WANIPConnection:2");
+			if (wanIPSrv == null) {
+				wanIPSrv = wanConnDevice.getService("urn:schemas-upnp-org:service:WANIPConnection:1");
+			}
 			String failStr = System.getProperty("net.sbbi.upnp.remote.failWhenNoDeviceFound");
 			boolean fail = false;
 			if (failStr != null && failStr.equalsIgnoreCase("true"))
 				fail = true;
 			if (wanIPSrv == null && fail) {
-				throw new RemoteException("Device does not implement the urn:schemas-upnp-org:service:WANIPConnection:1 service");
+				throw new RemoteException("Device does not implement the urn:schemas-upnp-org:service:WANIPConnection:1 or 2 service");
 			} else if (wanIPSrv == null && !fail) {
 				return;
 			}
@@ -347,7 +351,10 @@ public class UnicastRemoteObject extends RemoteServer {
 	public void closePort() {
 		if (wanConnDevice != null && portOpened) {
 
-			net.sbbi.upnp.services.UPNPService wanIPSrv = wanConnDevice.getService("urn:schemas-upnp-org:service:WANIPConnection:1");
+			net.sbbi.upnp.services.UPNPService wanIPSrv = wanConnDevice.getService("urn:schemas-upnp-org:service:WANIPConnection:2");
+			if (wanIPSrv == null) {
+				wanIPSrv = wanConnDevice.getService("urn:schemas-upnp-org:service:WANIPConnection:1");
+			}
 			if (wanIPSrv != null) {
 				UPNPMessageFactory msgFactory = UPNPMessageFactory.getNewInstance(wanIPSrv);
 				ActionMessage msg = msgFactory.getMessage("DeletePortMapping");
@@ -379,16 +386,16 @@ public class UnicastRemoteObject extends RemoteServer {
 				try {
 					String timeout = System.getProperty("net.sbbi.upnp.remote.discoveryTimeout");
 					if (timeout != null) {
-						devices = Discovery.discover(Integer.parseInt(timeout), "urn:schemas-upnp-org:device:InternetGatewayDevice:1");
+						devices = Discovery.discover(Integer.parseInt(timeout), List.of("urn:schemas-upnp-org:device:InternetGatewayDevice:1", "urn:schemas-upnp-org:device:InternetGatewayDevice:2"));
 					} else {
-						devices = Discovery.discover("urn:schemas-upnp-org:device:InternetGatewayDevice:1");
+						devices = Discovery.discover(List.of("urn:schemas-upnp-org:device:InternetGatewayDevice:1", "urn:schemas-upnp-org:device:InternetGatewayDevice:2"));
 					}
 				} catch (IOException ex) {
 					throw new RemoteException("IOException occured during devices discovery", ex);
 				}
 
 				if (devices == null && fail)
-					throw new IllegalStateException("No UPNP IGD (urn:schemas-upnp-org:device:InternetGatewayDevice:1) available, unable to create object");
+					throw new IllegalStateException("No UPNP IGD (urn:schemas-upnp-org:device:InternetGatewayDevice:1 or 2) available, unable to create object");
 				if (devices != null && devices.length > 1) {
 					String deviceUDN = System.getProperty("net.sbbi.upnp.remote.deviceUDN");
 					if (deviceUDN == null) {
@@ -425,9 +432,12 @@ public class UnicastRemoteObject extends RemoteServer {
 				}
 
 				if (rootIGDDevice != null) {
-					wanConnDevice = rootIGDDevice.getChildDevice("urn:schemas-upnp-org:device:WANConnectionDevice:1");
+					wanConnDevice = rootIGDDevice.getChildDevice("urn:schemas-upnp-org:device:WANConnectionDevice:2");
+					if (wanConnDevice == null) {
+						wanConnDevice = rootIGDDevice.getChildDevice("urn:schemas-upnp-org:device:WANConnectionDevice:1");
+					}
 					if (wanConnDevice == null && fail)
-						throw new RemoteException("Your UPNP device does not implements urn:schemas-upnp-org:device:WANConnectionDevice:1 required specs for NAT transversal");
+						throw new RemoteException("Your UPNP device does not implements urn:schemas-upnp-org:device:WANConnectionDevice:1 or 2 required specs for NAT transversal");
 				}
 			}
 		}

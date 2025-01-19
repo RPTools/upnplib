@@ -16,6 +16,8 @@ import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.NetworkInterface;
 import java.net.URL;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -76,7 +78,22 @@ public class Discovery {
 	 *             if some IOException occurs during discovering
 	 */
 	public static UPNPRootDevice[] discover(String searchTarget) throws IOException {
-		return discover(DEFAULT_TIMEOUT, DEFAULT_TTL, DEFAULT_MX, searchTarget);
+		return discover(DEFAULT_TIMEOUT, DEFAULT_TTL, DEFAULT_MX, Collections.singleton(searchTarget));
+	}
+
+	/**
+	 * Devices discovering on all network interfaces with a given root device to search
+	 * 
+	 * @param searchTargets
+	 *            the device URIs to search
+	 * @return an array of UPNP Root device that matches the search or null if nothing found with the default timeout.
+	 *         Null does NOT means that no UPNP device is available on the network. It only means that for this given
+	 *         timeout no devices responded or that effectively no devices are available at all.
+	 * @throws IOException
+	 *             if some IOException occurs during discovering
+	 */
+	public static UPNPRootDevice[] discover(Collection<String> searchTargets) throws IOException {
+		return discover(DEFAULT_TIMEOUT, DEFAULT_TTL, DEFAULT_MX, searchTargets);
 	}
 
 	/**
@@ -93,7 +110,24 @@ public class Discovery {
 	 *             if some IOException occurs during discovering
 	 */
 	public static UPNPRootDevice[] discover(int timeOut, String searchTarget) throws IOException {
-		return discover(timeOut, DEFAULT_TTL, DEFAULT_MX, searchTarget);
+		return discover(timeOut, DEFAULT_TTL, DEFAULT_MX, Collections.singleton(searchTarget));
+	}
+
+	/**
+	 * Devices discovering on all network interfaces with a given timeout and a given root device to search
+	 * 
+	 * @param timeOut
+	 *            the time allowed for a device to give a response
+	 * @param searchTargets
+	 *            the device URIs to search
+	 * @return an array of UPNP Root device that matches the search or null if nothing found with the given timeout.
+	 *         Null does NOT means that no UPNP device is available on the network. It only means that for this given
+	 *         timeout no devices responded or that effectively no devices are available at all.
+	 * @throws IOException
+	 *             if some IOException occurs during discovering
+	 */
+	public static UPNPRootDevice[] discover(int timeOut, Collection<String> searchTargets) throws IOException {
+		return discover(timeOut, DEFAULT_TTL, DEFAULT_MX, searchTargets);
 	}
 
 	/**
@@ -115,7 +149,29 @@ public class Discovery {
 	 *             if some IOException occurs during discovering
 	 */
 	public static UPNPRootDevice[] discover(int timeOut, int ttl, int mx, String searchTarget) throws IOException {
-		return discoverDevices(timeOut, ttl, mx, searchTarget, null);
+		return discoverDevices(timeOut, ttl, mx, Collections.singleton(searchTarget), null);
+	}
+
+	/**
+	 * Devices discovering on all network interfaces with a given timeout and a given root device to search, as well as
+	 * a ttl and mx param
+	 * 
+	 * @param timeOut
+	 *            the timeout for the a device to give a reponse
+	 * @param ttl
+	 *            the UDP socket packets time to live
+	 * @param mx
+	 *            discovery message mx http header field value
+	 * @param searchTargets
+	 *            the device URIs to search
+	 * @return an array of UPNP Root device that matches the search or null if nothing found within the given timeout.
+	 *         Null return does NOT means that no UPNP device is available on the network. It only means that for this
+	 *         given timeout no devices responded or that effectively no devices are available at all.
+	 * @throws IOException
+	 *             if some IOException occurs during discovering
+	 */
+	public static UPNPRootDevice[] discover(int timeOut, int ttl, int mx, Collection<String> searchTargets) throws IOException {
+		return discoverDevices(timeOut, ttl, mx, searchTargets, null);
 	}
 
 	/**
@@ -139,12 +195,42 @@ public class Discovery {
 	 *             if some IOException occurs during discovering
 	 */
 	public static UPNPRootDevice[] discover(int timeOut, int ttl, int mx, String searchTarget, NetworkInterface ni) throws IOException {
-		return discoverDevices(timeOut, ttl, mx, searchTarget, ni);
+		return discoverDevices(timeOut, ttl, mx, Collections.singleton(searchTarget), ni);
 	}
 
-	private static UPNPRootDevice[] discoverDevices(int timeOut, int ttl, int mx, String searchTarget, NetworkInterface ni) throws IOException {
-		if (searchTarget == null || searchTarget.trim().length() == 0) {
-			throw new IllegalArgumentException("Illegal searchTarget");
+	/**
+	 * Devices discovering with a given timeout and a given root device to search on an given network interface, as well
+	 * as a ttl and mx param
+	 * 
+	 * @param timeOut
+	 *            the timeout for the a device to give a reponse
+	 * @param ttl
+	 *            the UDP socket packets time to live
+	 * @param mx
+	 *            discovery message mx http header field value
+	 * @param searchTargets
+	 *            the device URIs to search
+	 * @param ni
+	 *            the networkInterface where to search devices, null to lookup all interfaces
+	 * @return an array of UPNP Root device that matches the search or null if nothing found within the given timeout.
+	 *         Null return does NOT means that no UPNP device is available on the network. It only means that for this
+	 *         given timeout no devices responded or that effectively no devices are available at all.
+	 * @throws IOException
+	 *             if some IOException occurs during discovering
+	 */
+	public static UPNPRootDevice[] discover(int timeOut, int ttl, int mx, Collection<String> searchTargets, NetworkInterface ni) throws IOException {
+		return discoverDevices(timeOut, ttl, mx, searchTargets, ni);
+	}
+
+	private static UPNPRootDevice[] discoverDevices(int timeOut, int ttl, int mx, Collection<String> searchTargets, NetworkInterface ni) throws IOException {
+		if (searchTargets == null || searchTargets.size() == 0) {
+			throw new IllegalArgumentException("Illegal searchTargets");
+		}
+		for (Iterator<String> i = searchTargets.iterator(); i.hasNext();) {
+			String searchTarget = i.next();
+			if (searchTarget == null || searchTarget.trim().length() == 0) {
+				throw new IllegalArgumentException("Illegal searchTarget");
+			}
 		}
 		final Map<String, UPNPRootDevice> devices = new HashMap<String, UPNPRootDevice>();
 
@@ -163,7 +249,11 @@ public class Discovery {
 			}
 		};
 
-		DiscoveryListener.getInstance().registerResultsHandler(handler, searchTarget);
+		DiscoveryListener discoveryListener = DiscoveryListener.getInstance();
+		for (Iterator<String> i = searchTargets.iterator(); i.hasNext();) {
+			String searchTarget = i.next();
+			discoveryListener.registerResultsHandler(handler, searchTarget);
+		}
 		if (ni == null) {
 			for (Enumeration<NetworkInterface> e = NetworkInterface.getNetworkInterfaces(); e.hasMoreElements();) {
 				NetworkInterface intf = e.nextElement();
@@ -171,7 +261,7 @@ public class Discovery {
 					InetAddress adr = adrs.nextElement();
 					if (adr instanceof Inet4Address && !adr.isLoopbackAddress()) {
 						try {
-							sendSearchMessage(adr, ttl, mx, searchTarget);
+							sendSearchMessages(adr, ttl, mx, searchTargets);
 						} catch (IOException ioe) {
 							// Probably 'No route to host' so just ignore this interface and keep going...
 						}
@@ -183,7 +273,7 @@ public class Discovery {
 				InetAddress adr = adrs.nextElement();
 				if (adr instanceof Inet4Address && !adr.isLoopbackAddress()) {
 					try {
-						sendSearchMessage(adr, ttl, mx, searchTarget);
+						sendSearchMessages(adr, ttl, mx, searchTargets);
 					} catch (IOException ioe) {
 						// Probably 'No route to host' so just ignore this interface and keep going...
 					}
@@ -196,7 +286,10 @@ public class Discovery {
 		} catch (InterruptedException ex) {
 			// don't care
 		}
-		DiscoveryListener.getInstance().unRegisterResultsHandler(handler, searchTarget);
+		for (Iterator<String> i = searchTargets.iterator(); i.hasNext();) {
+			String searchTarget = i.next();
+			discoveryListener.unRegisterResultsHandler(handler, searchTarget);
+		}
 		if (devices.isEmpty()) {
 			return null;
 		}
@@ -223,6 +316,10 @@ public class Discovery {
 	 *             if some IO errors occurs during search
 	 */
 	public static void sendSearchMessage(InetAddress src, int ttl, int mx, String searchTarget) throws IOException {
+		sendSearchMessages(src, ttl, mx, Collections.singleton(searchTarget));
+	}
+
+	private static void sendSearchMessages(InetAddress src, int ttl, int mx, Collection<String> searchTargets) throws IOException {
 		int bindPort = DEFAULT_SSDP_SEARCH_PORT;
 		String port = System.getProperty("net.sbbi.upnp.Discovery.bindPort");
 		if (port != null) {
@@ -235,18 +332,22 @@ public class Discovery {
 		java.net.MulticastSocket skt = new java.net.MulticastSocket(bindAdr);
 //		skt.joinGroup(groupAdr); // Don't need to be a member of the group to send packets to that group...
 		skt.setTimeToLive(ttl);
-		StringBuffer packet = new StringBuffer();
-		packet.append("M-SEARCH * HTTP/1.1\r\n");
-		packet.append("HOST: 239.255.255.250:1900\r\n");
-		packet.append("ST: ").append(searchTarget).append("\r\n");
-		packet.append("MAN: \"ssdp:discover\"\r\n");
-		packet.append("MX: ").append(mx).append("\r\n");
-		packet.append("\r\n");
-		if (log.isDebugEnabled())
-			log.debug("Sending discovery message on 239.255.255.250:1900 multicast address from ip " + src.getHostAddress() + ":\n" + packet.toString());
-		String toSend = packet.toString();
-		byte[] pk = toSend.getBytes();
-		skt.send(new DatagramPacket(pk, pk.length, adr));
+		for (Iterator<String> i = searchTargets.iterator(); i.hasNext();) {
+			String searchTarget = i.next();
+
+			StringBuffer packet = new StringBuffer();
+			packet.append("M-SEARCH * HTTP/1.1\r\n");
+			packet.append("HOST: 239.255.255.250:1900\r\n");
+			packet.append("ST: ").append(searchTarget).append("\r\n");
+			packet.append("MAN: \"ssdp:discover\"\r\n");
+			packet.append("MX: ").append(mx).append("\r\n");
+			packet.append("\r\n");
+			if (log.isDebugEnabled())
+				log.debug("Sending discovery message on 239.255.255.250:1900 multicast address from ip " + src.getHostAddress() + ":\n" + packet.toString());
+			String toSend = packet.toString();
+			byte[] pk = toSend.getBytes();
+			skt.send(new DatagramPacket(pk, pk.length, adr));
+		}
 		skt.disconnect();
 		skt.close();
 	}

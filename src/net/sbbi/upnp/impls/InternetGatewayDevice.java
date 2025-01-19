@@ -17,6 +17,7 @@ import java.net.NetworkInterface;
 import java.net.UnknownHostException;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
 import net.sbbi.upnp.Discovery;
@@ -51,18 +52,26 @@ public class InternetGatewayDevice {
 
 	private InternetGatewayDevice(UPNPRootDevice igd, boolean WANIPConnection, boolean WANPPPConnection) throws UnsupportedOperationException {
 		this.igd = igd;
-		UPNPDevice myIGDWANConnDevice = igd.getChildDevice("urn:schemas-upnp-org:device:WANConnectionDevice:1");
+		UPNPDevice myIGDWANConnDevice = igd.getChildDevice("urn:schemas-upnp-org:device:WANConnectionDevice:2");
 		if (myIGDWANConnDevice == null) {
-			throw new UnsupportedOperationException("device urn:schemas-upnp-org:device:WANConnectionDevice:1 not supported by IGD device " + igd.getModelName());
+			log.info("device urn:schemas-upnp-org:device:WANConnectionDevice:2 not supported by IGD device " + igd.getModelName());
+			myIGDWANConnDevice = igd.getChildDevice("urn:schemas-upnp-org:device:WANConnectionDevice:1");
+		}
+		if (myIGDWANConnDevice == null) {
+			throw new UnsupportedOperationException("device urn:schemas-upnp-org:device:WANConnectionDevice:1 or 2 not supported by IGD device " + igd.getModelName());
 		}
 
-		UPNPService wanIPSrv = myIGDWANConnDevice.getService("urn:schemas-upnp-org:service:WANIPConnection:1");
+		UPNPService wanIPSrv = myIGDWANConnDevice.getService("urn:schemas-upnp-org:service:WANIPConnection:2");
+		if (myIGDWANConnDevice == null) {
+			log.info("service urn:schemas-upnp-org:service:WANIPConnection:2 not supported by IGD device " + igd.getModelName());
+			wanIPSrv = myIGDWANConnDevice.getService("urn:schemas-upnp-org:service:WANIPConnection:1");
+		}
 		UPNPService wanPPPSrv = myIGDWANConnDevice.getService("urn:schemas-upnp-org:service:WANPPPConnection:1");
 
 		if ((WANIPConnection && WANPPPConnection) && (wanIPSrv == null && wanPPPSrv == null)) {
-			throw new UnsupportedOperationException("Unable to find any urn:schemas-upnp-org:service:WANIPConnection:1 or urn:schemas-upnp-org:service:WANPPPConnection:1 service");
+			throw new UnsupportedOperationException("Unable to find any urn:schemas-upnp-org:service:WANIPConnection:1, 2 or urn:schemas-upnp-org:service:WANPPPConnection:1 service");
 		} else if ((WANIPConnection && !WANPPPConnection) && wanIPSrv == null) {
-			throw new UnsupportedOperationException("Unable to find any urn:schemas-upnp-org:service:WANIPConnection:1 service");
+			throw new UnsupportedOperationException("Unable to find any urn:schemas-upnp-org:service:WANIPConnection:1 or 2 service");
 		} else if ((!WANIPConnection && WANPPPConnection) && wanPPPSrv == null) {
 			throw new UnsupportedOperationException("Unable to find any urn:schemas-upnp-org:service:WANPPPConnection:1 service");
 		}
@@ -109,7 +118,7 @@ public class InternetGatewayDevice {
 			}
 			if (msgFactory == null) {
 				// Nothing found using WANCommonInterfaceConfig! IP by default
-				log.warn("Unable to detect active WANIPConnection, dfaulting to urn:schemas-upnp-org:service:WANIPConnection:1");
+				log.warn("Unable to detect active WANIPConnection, dfaulting to urn:schemas-upnp-org:service:WANIPConnection:1 or 2");
 				msgFactory = UPNPMessageFactory.getNewInstance(wanIPSrv);
 			}
 		}
@@ -162,7 +171,7 @@ public class InternetGatewayDevice {
 	}
 
 	/**
-	 * Lookup all the IGD (IP urn:schemas-upnp-org:service:WANIPConnection:1, or PPP
+	 * Lookup all the IGD (IP urn:schemas-upnp-org:service:WANIPConnection:1, 2, or PPP
 	 * urn:schemas-upnp-org:service:WANPPPConnection:1) devices for a given network interface. If a device implements
 	 * both IP and PPP, the active service will be used for nat mappings.
 	 * 
@@ -183,15 +192,15 @@ public class InternetGatewayDevice {
 	}
 
 	/**
-	 * Lookup all the IGD IP devices on the network (urn:schemas-upnp-org:service:WANIPConnection:1 service)
+	 * Lookup all the IGD IP devices on the network (urn:schemas-upnp-org:service:WANIPConnection:1 or 2 service)
 	 * 
 	 * @param timeout
 	 *            the timeout in ms to listen for devices response, -1 for default value
 	 * @return an array of devices to play with or null if nothing found or if found devices do not have the
-	 *         urn:schemas-upnp-org:service:WANIPConnection:1 service
+	 *         urn:schemas-upnp-org:service:WANIPConnection:1 or 2 service
 	 * @deprecated use generic {@link #getDevices(int)} or {@link #getDevices(int, int, int, NetworkInterface)} methods
 	 *             since this one is not usable with all IGD devices ( will only work with devices implementing the
-	 *             urn:schemas-upnp-org:service:WANIPConnection:1 service )
+	 *             urn:schemas-upnp-org:service:WANIPConnection:1 or 2 service )
 	 */
 	@Deprecated
 	public static InternetGatewayDevice[] getIPDevices(int timeout) throws IOException {
@@ -218,9 +227,9 @@ public class InternetGatewayDevice {
 		UPNPRootDevice[] devices = null;
 		InternetGatewayDevice[] rtrVal = null;
 		if (timeout == -1) {
-			devices = Discovery.discover(Discovery.DEFAULT_TIMEOUT, ttl, mx, "urn:schemas-upnp-org:device:InternetGatewayDevice:1", ni);
+			devices = Discovery.discover(Discovery.DEFAULT_TIMEOUT, ttl, mx, List.of("urn:schemas-upnp-org:device:InternetGatewayDevice:1", "urn:schemas-upnp-org:device:InternetGatewayDevice:2"), ni);
 		} else {
-			devices = Discovery.discover(timeout, ttl, mx, "urn:schemas-upnp-org:device:InternetGatewayDevice:1", ni);
+			devices = Discovery.discover(timeout, ttl, mx, List.of("urn:schemas-upnp-org:device:InternetGatewayDevice:1", "urn:schemas-upnp-org:device:InternetGatewayDevice:2"), ni);
 		}
 		if (devices != null) {
 			Set<InternetGatewayDevice> valid = new HashSet<InternetGatewayDevice>();

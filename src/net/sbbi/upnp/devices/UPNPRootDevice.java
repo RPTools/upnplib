@@ -141,7 +141,7 @@ public class UPNPRootDevice extends UPNPDevice {
 		specVersionMajor = Integer.parseInt((String) rootCtx.getValue("upnp:specVersion/upnp:major"));
 		specVersionMinor = Integer.parseInt((String) rootCtx.getValue("upnp:specVersion/upnp:minor"));
 
-		if (!(specVersionMajor == 1 && specVersionMinor == 0)) {
+		if (!(specVersionMajor == 1)) {
 			throw new IllegalStateException("Unsupported device version (" + specVersionMajor + "." + specVersionMinor + ")");
 		}
 		boolean buildURLBase = true;
@@ -358,6 +358,9 @@ public class UPNPRootDevice extends UPNPDevice {
 	 */
 	private void fillUPNPServicesList(UPNPDevice device, JXPathContext deviceCtx) throws MalformedURLException {
 		Pointer serviceListPtr = deviceCtx.getPointer("upnp:serviceList");
+		if (serviceListPtr == null) {
+			return;
+		}
 		JXPathContext serviceListCtx = deviceCtx.getRelativeContext(serviceListPtr);
 		Double arraySize = (Double) serviceListCtx.getValue("count( upnp:service )");
 		if (log.isDebugEnabled())

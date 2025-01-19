@@ -1,9 +1,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>upnplib</groupId>
+  <groupId>net.sbbi.upnp</groupId>
   <artifactId>upnplib</artifactId>
-  <version>1.0.9-nodebug</version>
+  <version>1.0.10-nodebug</version>
   <name>upnplib</name>
   <description>RPTools UPNP 1.0 library</description>
   <build>
@@ -21,8 +21,8 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.0</version>
         <configuration>
-          <source>1.6</source>
-          <target>1.6</target>
+          <source>1.8</source>
+          <target>1.8</target>
           <excludes>
             <exclude>net/sbbi/upnp/jmx/**</exclude>
           </excludes>
