@@ -1,12 +1,10 @@
 /*
- *  This software copyright by various authors including the RPTools.net
- *  development team, and licensed under the LGPL Version 3 or, at your
- *  option, any later version.
- *
- *  Portions of this software were originally covered under the Apache
- *  Software License, Version 1.1 or Version 2.0.
- *
- *  See the file LICENSE elsewhere in this distribution for license details.
+ * This software copyright by various authors including the RPTools.net development team, and licensed under the LGPL
+ * Version 3 or, at your option, any later version.
+ * 
+ * Portions of this software were originally covered under the Apache Software License, Version 1.1 or Version 2.0.
+ * 
+ * See the file LICENSE elsewhere in this distribution for license details.
  */
 
 package net.sbbi.upnp.samples;
@@ -23,6 +21,8 @@ import net.sbbi.upnp.messages.UPNPMessageFactory;
 import net.sbbi.upnp.messages.UPNPResponseException;
 import net.sbbi.upnp.services.UPNPService;
 
+import org.apache.log4j.BasicConfigurator;
+
 /**
  * Sample class to access an UPNP device that implement the Internet Gateway Device specs This sample will simply print
  * the device external ip. We assume that an UPNP device that is implementing IGD is available on the network
@@ -33,7 +33,9 @@ import net.sbbi.upnp.services.UPNPService;
 public class IGDAccessSample {
 	public static void main(String args[]) {
 		//DiscoveryAdvertisement.getInstance().notifyEvent(1, null);
+		int deviceCount = 0;
 		try {
+			BasicConfigurator.configure();
 			// search for an INTERNET_GATEWAY_DEVICE, we give 1500 ms for the
 			// device to respond
 			UPNPRootDevice[] rootDevices = Discovery.discover(1500, "urn:schemas-upnp-org:device:InternetGatewayDevice:1");
@@ -48,6 +50,7 @@ public class IGDAccessSample {
 				if (devices != null) {
 					devices.add(rootDevice);
 					for (Iterator<UPNPDevice> i = devices.iterator(); i.hasNext();) {
+						deviceCount++;
 						UPNPDevice device = i.next();
 						System.out.println();
 						System.out.println("type " + device.getDeviceType());
@@ -122,6 +125,7 @@ public class IGDAccessSample {
 					}
 				}
 			}
+			System.out.println("Number of devices found: " + deviceCount);
 		} catch (Exception ex) {
 			ex.printStackTrace(System.err);
 		}
