@@ -14,7 +14,6 @@ package net.sbbi.upnp.remote;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.ServerSocket;
-import java.util.List;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.rmi.server.ExportException;
@@ -25,6 +24,9 @@ import java.rmi.server.RemoteServer;
 import java.rmi.server.RemoteStub;
 import java.rmi.server.ServerCloneException;
 import java.rmi.server.ServerRef;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import net.sbbi.upnp.Discovery;
 import net.sbbi.upnp.devices.UPNPDevice;
@@ -72,6 +74,14 @@ public class UnicastRemoteObject extends RemoteServer {
 	private static Class<?>[] portFactoryParamTypes = {
 			int.class, RMIClientSocketFactory.class, RMIServerSocketFactory.class
 	};
+
+	private final static List<String> IGD_URNS;
+	static {
+		List<String> list = new ArrayList<String>();
+		list.add("urn:schemas-upnp-org:device:InternetGatewayDevice:1");
+		list.add("urn:schemas-upnp-org:device:InternetGatewayDevice:2");
+		IGD_URNS = Collections.unmodifiableList(list);
+	}
 
 	private final static Object DISCOVERY_PROCESS = new Object();
 	private final static Object ANONYMOUS_PORT_LOOKUP = new Object();
@@ -386,9 +396,9 @@ public class UnicastRemoteObject extends RemoteServer {
 				try {
 					String timeout = System.getProperty("net.sbbi.upnp.remote.discoveryTimeout");
 					if (timeout != null) {
-						devices = Discovery.discover(Integer.parseInt(timeout), List.of("urn:schemas-upnp-org:device:InternetGatewayDevice:1", "urn:schemas-upnp-org:device:InternetGatewayDevice:2"));
+						devices = Discovery.discover(Integer.parseInt(timeout), IGD_URNS);
 					} else {
-						devices = Discovery.discover(List.of("urn:schemas-upnp-org:device:InternetGatewayDevice:1", "urn:schemas-upnp-org:device:InternetGatewayDevice:2"));
+						devices = Discovery.discover(IGD_URNS);
 					}
 				} catch (IOException ex) {
 					throw new RemoteException("IOException occured during devices discovery", ex);

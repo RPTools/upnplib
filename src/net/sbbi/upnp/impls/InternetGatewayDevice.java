@@ -15,6 +15,8 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.net.UnknownHostException;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -42,6 +44,14 @@ import org.apache.log4j.Logger;
  */
 public class InternetGatewayDevice {
 	private final static Logger log = Logger.getLogger(InternetGatewayDevice.class);
+
+	private final static List<String> IGD_URNS;
+	static {
+		List<String> list = new ArrayList<String>();
+		list.add("urn:schemas-upnp-org:device:InternetGatewayDevice:1");
+		list.add("urn:schemas-upnp-org:device:InternetGatewayDevice:2");
+		IGD_URNS = Collections.unmodifiableList(list);
+	}
 
 	private final UPNPRootDevice igd;
 	private UPNPMessageFactory msgFactory;
@@ -227,9 +237,9 @@ public class InternetGatewayDevice {
 		UPNPRootDevice[] devices = null;
 		InternetGatewayDevice[] rtrVal = null;
 		if (timeout == -1) {
-			devices = Discovery.discover(Discovery.DEFAULT_TIMEOUT, ttl, mx, List.of("urn:schemas-upnp-org:device:InternetGatewayDevice:1", "urn:schemas-upnp-org:device:InternetGatewayDevice:2"), ni);
+			devices = Discovery.discover(Discovery.DEFAULT_TIMEOUT, ttl, mx, IGD_URNS, ni);
 		} else {
-			devices = Discovery.discover(timeout, ttl, mx, List.of("urn:schemas-upnp-org:device:InternetGatewayDevice:1", "urn:schemas-upnp-org:device:InternetGatewayDevice:2"), ni);
+			devices = Discovery.discover(timeout, ttl, mx, IGD_URNS, ni);
 		}
 		if (devices != null) {
 			Set<InternetGatewayDevice> valid = new HashSet<InternetGatewayDevice>();
