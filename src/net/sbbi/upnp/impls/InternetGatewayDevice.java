@@ -72,7 +72,7 @@ public class InternetGatewayDevice {
 		}
 
 		UPNPService wanIPSrv = myIGDWANConnDevice.getService("urn:schemas-upnp-org:service:WANIPConnection:2");
-		if (myIGDWANConnDevice == null) {
+		if (wanIPSrv == null) {
 			log.info("service urn:schemas-upnp-org:service:WANIPConnection:2 not supported by IGD device " + igd.getModelName());
 			wanIPSrv = myIGDWANConnDevice.getService("urn:schemas-upnp-org:service:WANIPConnection:1");
 		}
